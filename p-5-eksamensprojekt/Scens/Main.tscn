@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cc83t2h031ost"]
+
+[ext_resource type="Texture2D" uid="uid://dqpuwibmdnn2j" path="res://Assets/textures/texture_07.png" id="1_7rehu"]
+[ext_resource type="Texture2D" uid="uid://7bkb25gn5l44" path="res://Assets/textures/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="2_u5kb4"]
+[ext_resource type="PackedScene" uid="uid://dv3tuhkj4utx5" path="res://player/player/player.tscn" id="3_u5kb4"]
+[ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
+[ext_resource type="PackedScene" uid="uid://drjnfyj0y73wc" path="res://Assets/models/human-eye/source/Eye/FBX/Lowpoly.fbx" id="5_ix14i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
+albedo_texture = ExtResource("1_7rehu")
+uv1_triplanar = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ix14i"]
+panorama = ExtResource("2_u5kb4")
+
+[sub_resource type="Sky" id="Sky_60glb"]
+sky_material = SubResource("PanoramaSkyMaterial_ix14i")
+
+[sub_resource type="Environment" id="Environment_b3mtf"]
+background_mode = 2
+sky = SubResource("Sky_60glb")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D" unique_id=1116056176]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1475332707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_st1p4")
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="Env" type="Node3D" parent="." unique_id=661273931]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env" unique_id=1767952682]
+environment = SubResource("Environment_b3mtf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env" unique_id=674192192]
+transform = Transform3D(0.57010365, 0.6539221, -0.49736044, -0.087108426, 0.65007544, 0.75486034, 0.81694186, -0.3870243, 0.4275725, 0, 6, 0)
+light_color = Color(0.78641325, 0.5404266, 0.2174289, 1)
+light_energy = 3.008
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." unique_id=632669668 instance=ExtResource("3_u5kb4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 2, 0)
+
+[node name="pedestal" parent="." unique_id=259845688 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -10, 1, 0)
+
+[node name="pedestal2" parent="." unique_id=861682763 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -3, 1, 0)
+
+[node name="Lowpoly" parent="." unique_id=1274612058 instance=ExtResource("5_ix14i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9974937, 1.9877315, -3.9995809)

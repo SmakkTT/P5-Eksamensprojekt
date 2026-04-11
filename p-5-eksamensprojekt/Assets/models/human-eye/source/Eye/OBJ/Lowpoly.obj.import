@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dr8500m84kcxo"
+path="res://.godot/imported/Lowpoly.obj-9cedc2f448f6d7a342d57cb0ed9c1dc3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Lowpoly.obj-9cedc2f448f6d7a342d57cb0ed9c1dc3.mesh"]
+
+source_file="res://Assets/models/human-eye/source/Eye/OBJ/Lowpoly.obj"
+dest_files=["res://.godot/imported/Lowpoly.obj-9cedc2f448f6d7a342d57cb0ed9c1dc3.mesh", "res://.godot/imported/Lowpoly.obj-9cedc2f448f6d7a342d57cb0ed9c1dc3.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
