@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7bkb25gn5l44" path="res://Assets/textures/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="2_u5kb4"]
 [ext_resource type="PackedScene" uid="uid://dv3tuhkj4utx5" path="res://player/player/player.tscn" id="3_u5kb4"]
 [ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
-[ext_resource type="PackedScene" uid="uid://drjnfyj0y73wc" path="res://Assets/models/human-eye/source/Eye/FBX/Lowpoly.fbx" id="5_ix14i"]
+[ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
 albedo_texture = ExtResource("1_7rehu")
@@ -22,10 +22,13 @@ sky = SubResource("Sky_60glb")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ix14i"]
+radius = 532.53516
+
 [node name="Main" type="Node3D" unique_id=1116056176]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1475332707]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002737999, 0.5723877, -0.020699024)
 material_override = SubResource("StandardMaterial3D_st1p4")
 use_collision = true
 size = Vector3(50, 1, 50)
@@ -44,11 +47,23 @@ shadow_enabled = true
 [node name="CharacterBody3D" parent="." unique_id=632669668 instance=ExtResource("3_u5kb4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 2, 0)
 
-[node name="pedestal" parent="." unique_id=259845688 instance=ExtResource("4_st1p4")]
+[node name="pedestal_laser" parent="." unique_id=259845688 instance=ExtResource("4_st1p4")]
 transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -10, 1, 0)
 
-[node name="pedestal2" parent="." unique_id=861682763 instance=ExtResource("4_st1p4")]
+[node name="pedestal_mirror" parent="." unique_id=861682763 instance=ExtResource("4_st1p4")]
 transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -3, 1, 0)
 
-[node name="Lowpoly" parent="." unique_id=1274612058 instance=ExtResource("5_ix14i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9974937, 1.9877315, -3.9995809)
+[node name="Sketchfab_Scene" parent="." unique_id=1023292055 instance=ExtResource("5_ix14i")]
+transform = Transform3D(-4.371139e-11, 0, 0.001, 0, 0.001, 0, -0.001, 0, -4.371139e-11, -10.026663, 1.6084788, 0.007249534)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene" unique_id=576136099]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/StaticBody3D" unique_id=1953711965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9201355, 1256.8463, 101.02246)
+shape = SubResource("SphereShape3D_ix14i")
+
+[node name="Sketchfab_Scene2" parent="." unique_id=188174548 instance=ExtResource("5_ix14i")]
+transform = Transform3D(-0.03127601, -0.034946296, -0.017336871, -0.014475613, 0.031030921, -0.036435407, 0.03622523, -0.017771844, -0.029527836, 63.93097, 24.489758, 58.818584)
+
+[node name="Sketchfab_Scene3" parent="." unique_id=121983582 instance=ExtResource("5_ix14i")]
+transform = Transform3D(0.9194676, -0.17070724, -0.354173, 0.0053329025, 0.90615535, -0.42291123, 0.39312994, 0.38696444, 0.8340908, 1518.055, -520.92334, -2453.6616)
