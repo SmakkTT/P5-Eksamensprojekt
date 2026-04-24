@@ -22,9 +22,6 @@ sky = SubResource("Sky_60glb")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ix14i"]
-radius = 532.53516
-
 [node name="Main" type="Node3D" unique_id=1116056176]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1475332707]
@@ -50,20 +47,57 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13,
 [node name="pedestal_laser" parent="." unique_id=259845688 instance=ExtResource("4_st1p4")]
 transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -10, 1, 0)
 
+[node name="CSGBox3D" type="CSGBox3D" parent="pedestal_laser" unique_id=1309502456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.342387, 0)
+size = Vector3(2.4277344, 1, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="pedestal_laser/CSGBox3D" unique_id=1291805448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033843994, 0.7096844, 0)
+size = Vector3(3.5336304, 0.49536133, 0.5732422)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="pedestal_laser/CSGBox3D" unique_id=406726809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037269592, -0.45594025, 0)
+size = Vector3(1.4447021, 0.35546875, 1.3613281)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="pedestal_laser/CSGBox3D" unique_id=137922267]
+transform = Transform3D(0.7313301, 0.68202394, 0, -0.68202394, 0.7313301, 0, 0, 0, 1, 1.3885498, -0.21234226, 0)
+operation = 2
+size = Vector3(1.0112305, 0.8676758, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="pedestal_laser/CSGBox3D" unique_id=1930015879]
+transform = Transform3D(-0.00040137107, 1.0000001, 0, -1.0000001, -0.00040137107, 0, 0, 0, 1, 1.1615067, -0.4451294, 0)
+operation = 2
+size = Vector3(0.5456543, 0.8676758, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="pedestal_laser/CSGBox3D" unique_id=2127134133]
+transform = Transform3D(-4.3711392e-08, 1.0000001, 0, -0.5, -2.1855694e-08, -0.8660254, -0.86602557, -3.7855177e-08, 0.49999994, -0.027126312, 0.34148312, 0.5257123)
+operation = 2
+size = Vector3(0.25048828, 3.0803223, 0.48181152)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="pedestal_laser/CSGBox3D" unique_id=800322125]
+transform = Transform3D(-3.199897e-08, 1.0000001, -4.3711392e-08, 0.5000001, -2.1855696e-08, -0.86602545, -0.8660258, -4.956761e-08, -0.49999997, -0.027126312, 0.34148312, -0.5116466)
+operation = 2
+size = Vector3(0.25048828, 3.0803223, 0.48181152)
+
 [node name="pedestal_mirror" parent="." unique_id=861682763 instance=ExtResource("4_st1p4")]
 transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -3, 1, 0)
-
-[node name="Sketchfab_Scene" parent="." unique_id=1023292055 instance=ExtResource("5_ix14i")]
-transform = Transform3D(-4.371139e-11, 0, 0.001, 0, 0.001, 0, -0.001, 0, -4.371139e-11, -10.026663, 1.6084788, 0.007249534)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene" unique_id=576136099]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/StaticBody3D" unique_id=1953711965]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9201355, 1256.8463, 101.02246)
-shape = SubResource("SphereShape3D_ix14i")
 
 [node name="Sketchfab_Scene2" parent="." unique_id=188174548 instance=ExtResource("5_ix14i")]
 transform = Transform3D(-0.03127601, -0.034946296, -0.017336871, -0.014475613, 0.031030921, -0.036435407, 0.03622523, -0.017771844, -0.029527836, 63.93097, 24.489758, 58.818584)
 
 [node name="Sketchfab_Scene3" parent="." unique_id=121983582 instance=ExtResource("5_ix14i")]
 transform = Transform3D(0.9194676, -0.17070724, -0.354173, 0.0053329025, 0.90615535, -0.42291123, 0.39312994, 0.38696444, 0.8340908, 1518.055, -520.92334, -2453.6616)
+visible = false
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1774024499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1219432, 2.5521905, 0)
+size = Vector3(0.021484375, 0.7714844, 0.7770996)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2" unique_id=1821263357]
+transform = Transform3D(0.96692586, -0.25505763, 0, 0.25505763, 0.96692586, 0, 0, 0, 1, 0.083637, -0.057197332, 0)
+size = Vector3(0.08251953, 0.8922119, 0.09765625)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D" unique_id=1642128234]
+transform = Transform3D(0.9659258, 0.25881913, 0, -0.25881913, 0.9659258, 0, 0, 0, 1, -0.050274134, 0.2819674, -0.010009766)
+operation = 2
+size = Vector3(0.08984375, 0.35479736, 0.11767578)
