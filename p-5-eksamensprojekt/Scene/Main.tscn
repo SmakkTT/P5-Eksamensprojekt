@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dv3tuhkj4utx5" path="res://player/player/player.tscn" id="3_u5kb4"]
 [ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
 [ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
+[ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
 albedo_texture = ExtResource("1_7rehu")
@@ -110,3 +111,7 @@ size = Vector3(0.08984375, 0.35479736, 0.11767578)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/StaticBody3D" unique_id=1854898832]
 shape = SubResource("BoxShape3D_ix14i")
+
+[node name="Laser" parent="." unique_id=676258119 instance=ExtResource("6_aan6j")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -9.588026, 2.3696177, -0.002107136)
+target_position = Vector3(0, 10, 0)
