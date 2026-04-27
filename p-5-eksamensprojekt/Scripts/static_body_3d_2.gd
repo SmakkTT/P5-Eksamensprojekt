@@ -1,1 +1,0 @@
-extends AnimatableBody3D
