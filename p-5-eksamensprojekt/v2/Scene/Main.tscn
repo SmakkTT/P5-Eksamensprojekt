@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
 [ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
 [ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
-[ext_resource type="PackedScene" uid="uid://bkj5m0t7vh6d8" path="res://Scene/mirror.tscn" id="8_6a8me"]
 [ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="8_hueuk"]
 [ext_resource type="PackedScene" uid="uid://boio28iht7qps" path="res://Scene/boxTarget.tscn" id="9_6a8me"]
 
@@ -100,10 +99,6 @@ target_position = Vector3(0, -10, 0)
 
 [node name="Box" parent="." unique_id=588835881 instance=ExtResource("8_hueuk")]
 transform = Transform3D(0.91316885, 0, -0.4075815, 0, 1, 0, 0.4075815, 0, 0.91316885, -3.0106745, 2.3715098, -0.009256065)
-visible = false
-
-[node name="Mirror" parent="." unique_id=546170102 instance=ExtResource("8_6a8me")]
-transform = Transform3D(0.6809126, 0, -0.73236465, 0, 1, 0, 0.73236465, 0, 0.6809126, -5.0324063, 2.4201193, -0.038136393)
 
 [node name="Box2" parent="." unique_id=839857124 groups=["target"] instance=ExtResource("9_6a8me")]
-transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -4.8199162, 2.4557219, -4.4098597)
+transform = Transform3D(-0.2623576, 0, 0.9649707, 0, 1, 0, -0.9649707, 0, -0.2623576, -5.1303387, 2.4557216, -2.4821262)

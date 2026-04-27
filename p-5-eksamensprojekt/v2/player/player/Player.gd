@@ -27,6 +27,9 @@ var t_bob = 0.0
 @onready var spotlight: SpotLight3D = $Neck/Flashlight/SpotLight3D
 @onready var flashlight_anim: AnimationPlayer = $Neck/Flashlight/AnimationPlayer
 
+# Raycast (LaserSpil) 
+@onready var interact_ray = $Camera3D/RayCast3D
+
 # Kører når spillet starter
 func _ready() -> void:
 	# Låser og skjuler musen, så den ikke er i vejen på skærmen
@@ -54,6 +57,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_flashlight"):
 		spotlight.visible = not spotlight.visible
 		flashlight_audio.play()
+		
+	# Tjek om spilleren trykker på 'E'
+	if event.is_action_pressed("interact"):
+		if interact_ray.is_colliding():
+			var target = interact_ray.get_collider()
+			# Tjek om det vi kigger på, har en "interact" funktion
+			if target.has_method("interact"):
+				target.interact()
 
 # Styrer fysikken og bevægelsen (kører hele tiden)
 func _physics_process(delta: float) -> void:
@@ -126,3 +137,5 @@ func _headbob(time: float, freq: float, amp: float) -> Vector3:
 	pos.y = sin(time * freq) * amp
 	pos.x = cos(time * freq / 2) * amp
 	return pos
+	
+	
