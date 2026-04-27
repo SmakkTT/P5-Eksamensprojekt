@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
 [ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
 [ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
+[ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="7_h3nmf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
 albedo_texture = ExtResource("1_7rehu")
@@ -113,5 +114,8 @@ size = Vector3(0.08984375, 0.35479736, 0.11767578)
 shape = SubResource("BoxShape3D_ix14i")
 
 [node name="Laser" parent="." unique_id=676258119 instance=ExtResource("6_aan6j")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -9.588026, 2.3696177, -0.002107136)
-target_position = Vector3(0, 10, 0)
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -9.587447, 2.3696177, -0.002107136)
+target_position = Vector3(0, -10, 0)
+
+[node name="Box" parent="." unique_id=588835881 groups=["spejl"] instance=ExtResource("7_h3nmf")]
+transform = Transform3D(0.90329784, 0, -0.42901397, 0, 1, 0, 0.42901397, 0, 0.90329784, -4.907468, 2.3131034, 0.02352345)
