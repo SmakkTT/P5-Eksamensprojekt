@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cy5a5fh2gcnt7"]
+
+[ext_resource type="PackedScene" uid="uid://bm0cdjrds6kno" path="res://Assets/models/pedestal/uploads_files_2350008_model/model/pedestal.blend" id="1_tkdng"]
+[ext_resource type="Material" uid="uid://dc4jvwd08nc8p" path="res://Assets/textures/pedestal.tres" id="2_rdg57"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tkdng"]
+size = Vector3(2, 4.728943, 2)
+
+[node name="pedestal" unique_id=259845688 instance=ExtResource("1_tkdng")]
+
+[node name="Padestal" parent="." index="0" unique_id=1416913322]
+material_override = ExtResource("2_rdg57")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Padestal" index="0" unique_id=2007165988]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Padestal/StaticBody3D" index="0" unique_id=1685485346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3678284, 0)
+shape = SubResource("BoxShape3D_tkdng")

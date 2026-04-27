@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cc83t2h031ost"]
+
+[ext_resource type="Texture2D" uid="uid://dqpuwibmdnn2j" path="res://Assets/textures/texture_07.png" id="1_7rehu"]
+[ext_resource type="Texture2D" uid="uid://7bkb25gn5l44" path="res://Assets/textures/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="2_u5kb4"]
+[ext_resource type="PackedScene" uid="uid://dv3tuhkj4utx5" path="res://player/player/player.tscn" id="3_u5kb4"]
+[ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
+[ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
+[ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
+[ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="7_h3nmf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
+albedo_texture = ExtResource("1_7rehu")
+uv1_triplanar = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ix14i"]
+panorama = ExtResource("2_u5kb4")
+
+[sub_resource type="Sky" id="Sky_ix14i"]
+sky_material = SubResource("PanoramaSkyMaterial_ix14i")
+
+[sub_resource type="Environment" id="Environment_b3mtf"]
+background_mode = 2
+sky = SubResource("Sky_ix14i")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ix14i"]
+size = Vector3(0.033203125, 0.77246094, 0.7841797)
+
+[node name="Main" type="Node3D" unique_id=1116056176]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1475332707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002737999, 0.5723877, -0.020699024)
+material_override = SubResource("StandardMaterial3D_st1p4")
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="Env" type="Node3D" parent="." unique_id=661273931]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env" unique_id=1767952682]
+environment = SubResource("Environment_b3mtf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env" unique_id=674192192]
+transform = Transform3D(0.57010365, 0.6539221, -0.49736044, -0.087108426, 0.65007544, 0.75486034, 0.81694186, -0.3870243, 0.4275725, 0, 6, 0)
+light_color = Color(0.78641325, 0.5404266, 0.2174289, 1)
+light_energy = 3.008
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." unique_id=632669668 instance=ExtResource("3_u5kb4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 2, 0)
+
+[node name="pedestal_laser" parent="." unique_id=259845688 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -10, 1, 0)
+
+[node name="KannonObjekt" type="CSGBox3D" parent="pedestal_laser" unique_id=1309502456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.342387, 0)
+size = Vector3(2.4277344, 1, 1)
+
+[node name="Skyder" type="CSGBox3D" parent="pedestal_laser/KannonObjekt" unique_id=1291805448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033843994, 0.7096844, 0)
+size = Vector3(3.5336304, 0.49536133, 0.5732422)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="pedestal_laser/KannonObjekt" unique_id=406726809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037269592, -0.45594025, 0)
+size = Vector3(1.4447021, 0.35546875, 1.3613281)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="pedestal_laser/KannonObjekt" unique_id=137922267]
+transform = Transform3D(0.7313301, 0.68202394, 0, -0.68202394, 0.7313301, 0, 0, 0, 1, 1.3885498, -0.21234226, 0)
+operation = 2
+size = Vector3(1.0112305, 0.8676758, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="pedestal_laser/KannonObjekt" unique_id=1930015879]
+transform = Transform3D(-0.00040137107, 1.0000001, 0, -1.0000001, -0.00040137107, 0, 0, 0, 1, 1.1615067, -0.4451294, 0)
+operation = 2
+size = Vector3(0.5456543, 0.8676758, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="pedestal_laser/KannonObjekt" unique_id=2127134133]
+transform = Transform3D(-4.3711392e-08, 1.0000001, 0, -0.5, -2.1855694e-08, -0.8660254, -0.86602557, -3.7855177e-08, 0.49999994, -0.027126312, 0.34148312, 0.5257123)
+operation = 2
+size = Vector3(0.25048828, 3.0803223, 0.48181152)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="pedestal_laser/KannonObjekt" unique_id=800322125]
+transform = Transform3D(-3.199897e-08, 1.0000001, -4.3711392e-08, 0.5000001, -2.1855696e-08, -0.86602545, -0.8660258, -4.956761e-08, -0.49999997, -0.027126312, 0.34148312, -0.5116466)
+operation = 2
+size = Vector3(0.25048828, 3.0803223, 0.48181152)
+
+[node name="pedestal_mirror" parent="." unique_id=861682763 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -3, 1, 0)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=188174548 instance=ExtResource("5_ix14i")]
+transform = Transform3D(-0.03127601, -0.034946296, -0.017336871, -0.014475613, 0.031030921, -0.036435407, 0.03622523, -0.017771844, -0.029527836, 63.93097, 24.489758, 58.818584)
+visible = false
+
+[node name="Sketchfab_Scene3" parent="." unique_id=121983582 instance=ExtResource("5_ix14i")]
+transform = Transform3D(0.9194676, -0.17070724, -0.354173, 0.0053329025, 0.90615535, -0.42291123, 0.39312994, 0.38696444, 0.8340908, 1518.055, -520.92334, -2453.6616)
+visible = false
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1774024499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1219432, 2.5521905, 0)
+size = Vector3(0.021484375, 0.7714844, 0.7770996)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2" unique_id=1821263357]
+transform = Transform3D(0.96692586, -0.25505763, 0, 0.25505763, 0.96692586, 0, 0, 0, 1, 0.083637, -0.057197332, 0)
+size = Vector3(0.08251953, 0.8922119, 0.09765625)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D" unique_id=1642128234]
+transform = Transform3D(0.9659258, 0.25881913, 0, -0.25881913, 0.9659258, 0, 0, 0, 1, -0.050274134, 0.2819674, -0.010009766)
+operation = 2
+size = Vector3(0.08984375, 0.35479736, 0.11767578)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D2" unique_id=1655159073]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/StaticBody3D" unique_id=1854898832]
+shape = SubResource("BoxShape3D_ix14i")
+
+[node name="Laser" parent="." unique_id=676258119 instance=ExtResource("6_aan6j")]
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -9.587447, 2.3696177, -0.002107136)
+target_position = Vector3(0, -10, 0)
+
+[node name="Box" parent="." unique_id=588835881 groups=["spejl"] instance=ExtResource("7_h3nmf")]
+transform = Transform3D(0.90329784, 0, -0.42901397, 0, 1, 0, 0.42901397, 0, 0.90329784, -4.907468, 2.3131034, 0.02352345)

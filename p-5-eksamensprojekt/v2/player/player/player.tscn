@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dv3tuhkj4utx5"]
+
+[ext_resource type="Script" uid="uid://csycgeirxpaoq" path="res://player/player/Player.gd" id="1_l24vl"]
+[ext_resource type="PackedScene" uid="uid://dxo0wdfmo0cs5" path="res://player/player/flashlight/source/Flashlight.glb" id="2_rkbax"]
+[ext_resource type="AudioStream" uid="uid://cp7kfh8f0i0ks" path="res://sounds/flashlight.wav" id="3_xuvyh"]
+[ext_resource type="AudioStream" uid="uid://ebxab8a3ar2t" path="res://sounds/walk.wav" id="4_uefk6"]
+[ext_resource type="AudioStream" uid="uid://coe7j84drylwe" path="res://sounds/sprint.wav" id="5_sfl1c"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l24vl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l24vl"]
+points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
+
+[sub_resource type="Animation" id="Animation_g1dw6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.199, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.34405413, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.294, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_rkbax"]
+resource_name = "draw"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-0.199, 0, 0, 0.16666667, 0, -0.199, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-0.729, 0, 0, 0.16666667, 0.06415764, -0.34405413, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.294, 0, 0, 0.16666667, 0, 0.294, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yw30f"]
+_data = {
+&"RESET": SubResource("Animation_g1dw6"),
+&"draw": SubResource("Animation_rkbax")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=632669668]
+script = ExtResource("1_l24vl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1897640129]
+mesh = SubResource("CapsuleMesh_l24vl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=843993698]
+shape = SubResource("ConvexPolygonShape3D_l24vl")
+
+[node name="Neck" type="Node3D" parent="." unique_id=323008355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65605414, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=819812103]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Flashlight" parent="Neck" unique_id=550503856 instance=ExtResource("2_rkbax")]
+transform = Transform3D(-6.993822e-09, 0, 0.16, 0, 0.16, 0, -0.16, 0, -6.993822e-09, -0.199, -0.34405413, 0.294)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Neck/Flashlight" unique_id=375449751]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.3554616, 0.4848435, -1.1920929e-07)
+light_color = Color(0.99999815, 0.99514157, 0.61777186, 1)
+light_energy = 3.133
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Neck/Flashlight" unique_id=23801933]
+libraries/ = SubResource("AnimationLibrary_yw30f")
+
+[node name="FlashlightAudio" type="AudioStreamPlayer3D" parent="." unique_id=1181682015]
+stream = ExtResource("3_xuvyh")
+
+[node name="WalkAudio" type="AudioStreamPlayer" parent="." unique_id=690541721]
+stream = ExtResource("4_uefk6")
+volume_db = -8.966
+
+[node name="SprintAudio" type="AudioStreamPlayer" parent="." unique_id=1356030975]
+stream = ExtResource("5_sfl1c")
+volume_db = -12.948

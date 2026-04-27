@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ccaxhmx4rgnk7"]
+
+[ext_resource type="Script" uid="uid://bpqjy20id14pj" path="res://Scripts/laser.gd" id="1_fn5yt"]
+[ext_resource type="PackedScene" uid="uid://uro8ydtf75i1" path="res://Scene/End_particles.tscn" id="2_6vqwg"]
+[ext_resource type="PackedScene" uid="uid://c6af8kdgq5a3l" path="res://Scene/beam_particles.tscn" id="3_g6b45"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oes6l"]
+flip_faces = true
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn5yt"]
+transparency = 1
+albedo_color = Color(0.8666667, 0.07450981, 0, 0.8392157)
+emission_enabled = true
+emission = Color(0.8666667, 0.07450981, 0, 1)
+emission_energy_multiplier = 10.0
+
+[node name="Laser" type="RayCast3D" unique_id=676258119]
+script = ExtResource("1_fn5yt")
+
+[node name="BeamMesh" type="MeshInstance3D" parent="." unique_id=1863094347]
+mesh = SubResource("CylinderMesh_oes6l")
+surface_material_override/0 = SubResource("StandardMaterial3D_fn5yt")
+
+[node name="EndParticles" parent="." unique_id=1951942282 instance=ExtResource("2_6vqwg")]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="BeamParticles" parent="." unique_id=200720527 instance=ExtResource("3_g6b45")]
