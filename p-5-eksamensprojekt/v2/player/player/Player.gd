@@ -28,7 +28,8 @@ var t_bob = 0.0
 @onready var flashlight_anim: AnimationPlayer = $Neck/Flashlight/AnimationPlayer
 
 # Raycast (LaserSpil) 
-@onready var interact_ray = $Camera3D/RayCast3D
+@onready var interact_ray = $Neck/Camera3D/RayCast3D
+var current_interactable = null
 
 # Kører når spillet starter
 func _ready() -> void:
@@ -65,6 +66,22 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Tjek om det vi kigger på, har en "interact" funktion
 			if target.has_method("interact"):
 				target.interact()
+
+# NY FUNKTION (LASER)
+func _process(_delta):
+	# Hvis vi har en menu åben (current_interactable er ikke tom)
+	if current_interactable:
+		var distance = global_position.distance_to(current_interactable.global_position)
+		# Hvis vi er mere end 1.5 meter væk
+		if distance > 1.5:
+			close_current_interaction()
+			
+# NY FUNKTION (LASER)
+func close_current_interaction():
+	get_tree().call_group("UI", "close_rotation_menu")
+	current_interactable = null
+
+
 
 # Styrer fysikken og bevægelsen (kører hele tiden)
 func _physics_process(delta: float) -> void:

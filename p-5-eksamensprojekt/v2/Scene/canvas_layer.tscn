@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://f37w524dae00"]
+
+[ext_resource type="Script" uid="uid://bk88j5ftqltx3" path="res://Scripts/canvas_layer.gd" id="1_ml06h"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=585292028 groups=["UI"]]
+script = ExtResource("1_ml06h")
+
+[node name="Panel" type="Panel" parent="." unique_id=1021755749]
+offset_right = 94.0
+offset_bottom = 16.0
+
+[node name="HSlider" type="HSlider" parent="Panel" unique_id=1444459342]
+layout_mode = 0
+offset_right = 94.0
+offset_bottom = 16.0
+min_value = -90.0
+max_value = 90.0

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 spejl=""
 player=""
 target=""
+UI=""
 
 [input]
 
