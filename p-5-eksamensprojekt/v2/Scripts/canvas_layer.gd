@@ -22,8 +22,12 @@ func close_rotation_menu():
 func _input(event):
 	# 'ui_cancel' er typisk ESC. Vi tjekker også for 'interact' (E)
 	if visible and (event.is_action_pressed("ui_cancel") or event.is_action_pressed("interact")):
+		
+		# VIGTIGT: Fortæl Godot at dette input er håndteret! Så genåbner Player-scriptet det ikke.
+		get_viewport().set_input_as_handled()
+		
 		# Fortæl spilleren at interaktionen er slut, så den stopper afstandstjekket
-		var player = get_tree().get_first_node_in_group("Player") # Husk at putte din player i en gruppe kaldet "Player"
+		var player = get_tree().get_first_node_in_group("Player") 
 		if player:
 			player.current_interactable = null
 		
