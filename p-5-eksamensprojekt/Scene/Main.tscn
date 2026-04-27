@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
 [ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
 [ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
-[ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="7_h3nmf"]
+[ext_resource type="PackedScene" uid="uid://s0v0v6gdgfoh" path="res://Scene/boxTarget.tscn" id="7_h3nmf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
 albedo_texture = ExtResource("1_7rehu")
 uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3nmf"]
+size = Vector3(1, 20, 50)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ix14i"]
 panorama = ExtResource("2_u5kb4")
@@ -24,16 +27,31 @@ sky = SubResource("Sky_ix14i")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ix14i"]
-size = Vector3(0.033203125, 0.77246094, 0.7841797)
-
 [node name="Main" type="Node3D" unique_id=1116056176]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1475332707]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002737999, 0.5723877, -0.020699024)
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1475332707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0038638115, 0.5812459, -0.006067753)
 material_override = SubResource("StandardMaterial3D_st1p4")
 use_collision = true
 size = Vector3(50, 1, 50)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=62460816]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=390943918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 10.5, 0)
+shape = SubResource("BoxShape3D_h3nmf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=949326826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 10.5, 0)
+shape = SubResource("BoxShape3D_h3nmf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1766741433]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 10.5, 25.5)
+shape = SubResource("BoxShape3D_h3nmf")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1731237245]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 10.5, -25.5)
+shape = SubResource("BoxShape3D_h3nmf")
 
 [node name="Env" type="Node3D" parent="." unique_id=661273931]
 
@@ -46,7 +64,7 @@ light_color = Color(0.78641325, 0.5404266, 0.2174289, 1)
 light_energy = 3.008
 shadow_enabled = true
 
-[node name="CharacterBody3D" parent="." unique_id=632669668 instance=ExtResource("3_u5kb4")]
+[node name="CharacterBody3D" parent="." unique_id=632669668 groups=["player"] instance=ExtResource("3_u5kb4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 2, 0)
 
 [node name="pedestal_laser" parent="." unique_id=259845688 instance=ExtResource("4_st1p4")]
@@ -95,27 +113,14 @@ visible = false
 transform = Transform3D(0.9194676, -0.17070724, -0.354173, 0.0053329025, 0.90615535, -0.42291123, 0.39312994, 0.38696444, 0.8340908, 1518.055, -520.92334, -2453.6616)
 visible = false
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1774024499]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1219432, 2.5521905, 0)
-size = Vector3(0.021484375, 0.7714844, 0.7770996)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2" unique_id=1821263357]
-transform = Transform3D(0.96692586, -0.25505763, 0, 0.25505763, 0.96692586, 0, 0, 0, 1, 0.083637, -0.057197332, 0)
-size = Vector3(0.08251953, 0.8922119, 0.09765625)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D" unique_id=1642128234]
-transform = Transform3D(0.9659258, 0.25881913, 0, -0.25881913, 0.9659258, 0, 0, 0, 1, -0.050274134, 0.2819674, -0.010009766)
-operation = 2
-size = Vector3(0.08984375, 0.35479736, 0.11767578)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D2" unique_id=1655159073]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/StaticBody3D" unique_id=1854898832]
-shape = SubResource("BoxShape3D_ix14i")
-
 [node name="Laser" parent="." unique_id=676258119 instance=ExtResource("6_aan6j")]
 transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -9.587447, 2.3696177, -0.002107136)
 target_position = Vector3(0, -10, 0)
 
 [node name="Box" parent="." unique_id=588835881 groups=["spejl"] instance=ExtResource("7_h3nmf")]
-transform = Transform3D(0.90329784, 0, -0.42901397, 0, 1, 0, 0.42901397, 0, 0.90329784, -4.907468, 2.3131034, 0.02352345)
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -3.0244882, 2.3249981, -0.017316371)
+script = null
+
+[node name="BoxTarget" parent="." unique_id=527247092 groups=["spejl", "target"] instance=ExtResource("7_h3nmf")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -3.0244882, 2.3249981, -6.10674)
+script = null
