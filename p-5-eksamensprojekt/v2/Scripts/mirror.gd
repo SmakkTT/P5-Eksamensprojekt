@@ -1,36 +1,33 @@
-extends AnimatableBody3D   # Skift StaticBody3D til AnimatableBody3D i scenen
+extends Node3D
 
-# Hvor mange grader spejlet drejer per tryk
-@export var rotation_step: float = 45.0
-# Hvor hurtigt det animerer hen til den nye vinkel
-@export var rotation_speed: float = 5.0
-# Hvilken akse det drejer rundt om (Y = vandret drej, X = vip op/ned)
-@export var rotation_axis: Vector3 = Vector3(0, 1, 0)   # Drejer vandret (Y-aksen)
-
-# Maks afstand spilleren skal være inden for for at aktivere
 @export var interact_distance: float = 3.0
 
-var target_rotation: float = 0.0
-var current_rotation: float = 0.0
 var player: Node3D = null
+var is_active: bool = false
+
+signal mirror_activated(mirror)
+signal mirror_deactivated
 
 func _ready():
-	# Find spilleren automatisk via gruppe — tilføj din Player-node til gruppen "player"
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
 
-func _process(delta):
-	# Glat animation mod target-vinklen
-	current_rotation = lerp(current_rotation, target_rotation, delta * rotation_speed)
-	transform.basis = Basis(rotation_axis, deg_to_rad(current_rotation))
-
-func _input(event):
-	if not event.is_action_pressed("interact"):   # Bind "interact" til E i Project Settings
-		return
+func _process(_delta):
 	if player == null:
 		return
-	if global_position.distance_to(player.global_position) > interact_distance:
-		return
+	var in_range = global_position.distance_to(player.global_position) <= interact_distance
+	if in_range and Input.is_action_just_pressed("interact"):
+		if not is_active:
+			is_active = true
+			mirror_activated.emit(self)
+		else:
+			is_active = false
+			mirror_deactivated.emit()
 
-	target_rotation += rotation_step
+# Kaldes fra UI-sliderens value_changed signal
+func set_rotation_y(value: float):
+	rotation_degrees.y = value
+
+func set_rotation_x(value: float):
+	rotation_degrees.x = value
