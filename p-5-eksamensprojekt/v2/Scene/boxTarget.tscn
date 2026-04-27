@@ -1,6 +1,4 @@
-[gd_scene format=3 uid="uid://4edjka3ylaup"]
-
-[ext_resource type="Script" uid="uid://q0qi6vbrdulm" path="res://Scripts/mirror.gd" id="1_xcwnv"]
+[gd_scene format=3 uid="uid://boio28iht7qps"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oyhfb"]
 size = Vector3(0.02, 0.6, 0.6)
@@ -11,8 +9,7 @@ data = PackedVector3Array(-0.25, 0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.2
 [node name="Box" type="MeshInstance3D" unique_id=588835881]
 mesh = SubResource("BoxMesh_oyhfb")
 
-[node name="StaticBody3D" type="AnimatableBody3D" parent="." unique_id=1819890734 groups=["spejl"]]
-script = ExtResource("1_xcwnv")
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1532888566 groups=["target"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1110044630]
 transform = Transform3D(0.05, 0, 0, 0, 1.2, 0, 0, 0, 1.19, 0, 0, 0)

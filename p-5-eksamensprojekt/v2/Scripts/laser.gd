@@ -40,7 +40,7 @@ func _process(_delta):
 			beam_mesh.mesh.top_radius
 		)
 
-		# --- Refleksionslogik ---
+		# --- Kollisionslogik ---
 		if ramt_objekt.is_in_group("spejl") and current_bounce < max_bounces:
 			var normal       = get_collision_normal()
 			var incoming_dir = (get_collision_point() - global_position).normalized()
@@ -51,19 +51,16 @@ func _process(_delta):
 				next_laser.current_bounce = current_bounce + 1
 				next_laser.top_level = true
 				add_child(next_laser)
-
-				# FIX 1: Udeluk det spejl vi netop ramte —
-				# child-laseren kan dermed ALDRIG ramme det igen,
-				# uanset kassens størrelse eller vinkel.
 				next_laser.add_exception(ramt_objekt)
 
 			next_laser.global_position = get_collision_point() + bounce_dir * SURFACE_OFFSET
 
-			# FIX 2: Sæt rotation direkte med en Quaternion i stedet for
-			# den skrøbelige look_at + rotate_object_local kombination.
-			# Laseren fyrer langs lokal -Y, så vi roterer (0,-1,0) hen mod bounce_dir.
 			var q = Quaternion(Vector3.DOWN, bounce_dir.normalized())
 			next_laser.global_transform.basis = Basis(q)
+
+		elif ramt_objekt.is_in_group("target"):
+			kill_next_laser()
+			_on_target_hit(ramt_objekt)
 
 		else:
 			kill_next_laser()
@@ -75,6 +72,10 @@ func _process(_delta):
 		end_particles.position.y          = target_position.y
 		beam_particles.position.y         = target_position.y / 2.0
 		kill_next_laser()
+
+func _on_target_hit(target_node):
+	if target_node.has_method("activate"):
+		target_node.activate()
 
 func kill_next_laser():
 	if next_laser != null:
