@@ -16,6 +16,7 @@ length = 0.001
 [sub_resource type="Animation" id="Animation_j4hkb"]
 resource_name = "toggleRollDoor"
 length = 1.5
+loop_mode = 2
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,6 +59,7 @@ material_override = SubResource("ShaderMaterial_mqxow")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002/Door rolling part_003" index="0" unique_id=1956268395]
 libraries/ = SubResource("AnimationLibrary_c2dc8")
+autoplay = &"toggleRollDoor"
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002/Door rolling part_003" index="1" unique_id=262438082]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -7.6293945e-06, -2.2888184e-05, 4.7683716e-07)
