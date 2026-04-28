@@ -9,28 +9,22 @@ func _ready():
 
 func open_rotation_menu(box):
 	current_box = box
-	slider.value = current_box.rotation_degrees.y
+	# FIX: Læs nuværende rotation fra MeshInstance3D (forælderen), ikke StaticBody3D
+	slider.value = current_box.get_parent().rotation_degrees.y
 	show()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-# Denne funktion kan nu kaldes fra Player-scriptet
 func close_rotation_menu():
 	hide()
 	current_box = null
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
-	# 'ui_cancel' er typisk ESC. Vi tjekker også for 'interact' (E)
 	if visible and (event.is_action_pressed("ui_cancel") or event.is_action_pressed("interact")):
-		
-		# VIGTIGT: Fortæl Godot at dette input er håndteret! Så genåbner Player-scriptet det ikke.
 		get_viewport().set_input_as_handled()
-		
-		# Fortæl spilleren at interaktionen er slut, så den stopper afstandstjekket
-		var player = get_tree().get_first_node_in_group("Player") 
+		var player = get_tree().get_first_node_in_group("Player")
 		if player:
 			player.current_interactable = null
-		
 		close_rotation_menu()
 
 func _on_slider_value_changed(value):
