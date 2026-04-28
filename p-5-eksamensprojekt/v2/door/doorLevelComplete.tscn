@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://tq11nuoyybmr" path="res://door/roll_door seperated1.glb" id="1_guv1h"]
 [ext_resource type="Shader" uid="uid://cj4aufehbc84c" path="res://door/doorLevelComplete.gdshader" id="2_j4hkb"]
+[ext_resource type="Script" uid="uid://sqhftquj3cbx" path="res://door/door_level_complete.gd" id="2_mqxow"]
 [ext_resource type="Texture2D" uid="uid://swaa7xjfqwxs" path="res://door/roll_door seperated1_Image_0.png" id="3_c2dc8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mqxow"]
@@ -16,7 +17,6 @@ length = 0.001
 [sub_resource type="Animation" id="Animation_j4hkb"]
 resource_name = "toggleRollDoor"
 length = 1.5
-loop_mode = 2
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,15 +51,18 @@ size = Vector3(2.6175804, 0.13445663, 0.095458984)
 radius = 0.15185547
 height = 1.1622314
 
-[node name="Door System" unique_id=508131183 instance=ExtResource("1_guv1h")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hoyt"]
+size = Vector3(2.1174316, 2.2875977, 0.20812988)
 
-[node name="Door rolling part_003" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002" parent_id_path=PackedInt32Array(847304489) index="0" unique_id=176508261]
+[node name="Door System" unique_id=508131183 instance=ExtResource("1_guv1h")]
+script = ExtResource("2_mqxow")
+
+[node name="Door rolling part_003" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002" parent_id_path=PackedInt32Array(1698877770) index="0" unique_id=1665666092]
 transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 123.46129, 223.05713, -5.029934)
 material_override = SubResource("ShaderMaterial_mqxow")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002/Door rolling part_003" index="0" unique_id=1956268395]
 libraries/ = SubResource("AnimationLibrary_c2dc8")
-autoplay = &"toggleRollDoor"
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002/Door rolling part_003" index="1" unique_id=262438082]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -7.6293945e-06, -2.2888184e-05, 4.7683716e-07)
@@ -100,3 +103,9 @@ shape = SubResource("CapsuleShape3D_c2dc8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D5" index="0" unique_id=971227916]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2671802, 0.48885512, 0.48739582)
 shape = SubResource("CapsuleShape3D_c2dc8")
+
+[node name="Triggerboxes" type="Area3D" parent="." index="4" unique_id=1547409322]
+
+[node name="NextLevelTrigger" type="CollisionShape3D" parent="Triggerboxes" index="0" unique_id=288188636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2023199, 1.1337615, -0.16184914)
+shape = SubResource("BoxShape3D_2hoyt")

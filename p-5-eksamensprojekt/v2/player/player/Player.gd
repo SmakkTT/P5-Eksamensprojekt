@@ -29,6 +29,10 @@ var t_bob = 0.0
 
 # Raycast (LaserSpil) 
 @onready var interact_ray = $Neck/Camera3D/RayCast3D
+
+# "Press E" label – lives at UI/Interactable in the main scene
+@onready var interact_label: Label = get_tree().root.get_node("Main/UI/Interactable")
+
 var current_interactable = null
 
 # Kører når spillet starter
@@ -40,6 +44,8 @@ func _ready() -> void:
 		flashlight_anim.play("draw")
 	else:
 		print_debug("Warning: 'draw' animation not found on AnimationPlayer")
+	
+	interact_label.hide()
 
 # Fanger når spilleren bruger musen eller tasterne
 func _unhandled_input(event: InputEvent) -> void:
@@ -66,17 +72,42 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Tjek om det vi kigger på, har en "interact" funktion
 			if target.has_method("interact"):
 				target.interact()
-				current_interactable = target # Denne linje manglede!!
+				current_interactable = target
 
 # NY FUNKTION (LASER)
-func _process(_delta):
+func _process(delta):
 	# Hvis vi har en menu åben (current_interactable er ikke tom)
 	if current_interactable:
 		var distance = global_position.distance_to(current_interactable.global_position)
 		# Hvis vi er mere end 1.5 meter væk
 		if distance > 1.5:
 			close_current_interaction()
-			
+
+	# --- Opdater "Press E" label ---
+	_update_interact_label()
+
+# Checks whether any interactable is close/aimed-at and shows/hides the label
+func _update_interact_label() -> void:
+	# Don't show the label while a rotation menu is open
+	if current_interactable != null:
+		interact_label.hide()
+		return
+
+	# 1. Check raycast for mirrors / anything with interact()
+	if interact_ray.is_colliding():
+		var target = interact_ray.get_collider()
+		if target.has_method("interact"):
+			interact_label.show()
+			return
+
+	# 2. Check proximity-based interactables (doors etc.) in group "interactable"
+	for node in get_tree().get_nodes_in_group("interactable"):
+		if node.has_method("is_player_in_range") and node.is_player_in_range(global_position):
+			interact_label.show()
+			return
+
+	interact_label.hide()
+		
 # NY FUNKTION (LASER)
 func close_current_interaction():
 	get_tree().call_group("UI", "close_rotation_menu")
@@ -155,5 +186,3 @@ func _headbob(time: float, freq: float, amp: float) -> Vector3:
 	pos.y = sin(time * freq) * amp
 	pos.x = cos(time * freq / 2) * amp
 	return pos
-	
-	

@@ -134,3 +134,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.4, 2)
 [node name="UI" type="Node3D" parent="." unique_id=386058720]
 
 [node name="RotateMirrorUI" parent="UI" unique_id=585292028 instance=ExtResource("9_yg4ot")]
+
+[node name="Interactable" type="Label" parent="UI" unique_id=719828636]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -574.5
+offset_top = 40.0
+offset_right = 574.5
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_font_sizes/font_size = 34
+text = "Press E to interact"
+horizontal_alignment = 1
