@@ -1,6 +1,8 @@
 extends CanvasLayer
 
-@onready var slider = $Panel/HSlider
+@onready var slider      = $Panel/VBoxContainer/HSlider
+@onready var angle_label = $Panel/VBoxContainer/AngleLabel
+
 var current_box = null
 
 func _ready():
@@ -9,8 +11,9 @@ func _ready():
 
 func open_rotation_menu(box):
 	current_box = box
-	# FIX: Læs nuværende rotation fra MeshInstance3D (forælderen), ikke StaticBody3D
-	slider.value = current_box.get_parent().rotation_degrees.y
+	var current_angle = current_box.get_parent().rotation_degrees.y
+	slider.value = current_angle
+	angle_label.text = str(int(current_angle)) + "°"
 	show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -28,5 +31,6 @@ func _input(event):
 		close_rotation_menu()
 
 func _on_slider_value_changed(value):
+	angle_label.text = str(int(value)) + "°"
 	if current_box:
 		current_box.set_y_rotation(value)

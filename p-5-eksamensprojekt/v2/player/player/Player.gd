@@ -66,6 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			# Tjek om det vi kigger på, har en "interact" funktion
 			if target.has_method("interact"):
 				target.interact()
+				current_interactable = target # Denne linje manglede!!
 
 # NY FUNKTION (LASER)
 func _process(_delta):

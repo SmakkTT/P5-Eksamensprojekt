@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
 [ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
 [ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="8_hueuk"]
+[ext_resource type="PackedScene" uid="uid://boio28iht7qps" path="res://Scene/boxTarget.tscn" id="9_6a8me"]
 [ext_resource type="PackedScene" uid="uid://f37w524dae00" path="res://Scene/canvas_layer.tscn" id="9_yg4ot"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
@@ -85,6 +86,18 @@ size = Vector3(0.25048828, 3.0803223, 0.48181152)
 [node name="pedestal_mirror" parent="." unique_id=861682763 instance=ExtResource("4_st1p4")]
 transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -3, 1, 0)
 
+[node name="pedestal_mirror4" parent="." unique_id=210477237 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -1.0112007, 1.0000002, 2.0061908)
+
+[node name="pedestal_mirror5" parent="." unique_id=1351308670 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -4.2313695, 1.0000002, 4.1975555)
+
+[node name="pedestal_mirror2" parent="." unique_id=1781647555 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -6.5856047, 1, -2)
+
+[node name="pedestal_mirror3" parent="." unique_id=1163067514 instance=ExtResource("4_st1p4")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -5.2764196, 1, -7.7374434)
+
 [node name="Sketchfab_Scene2" parent="." unique_id=188174548 instance=ExtResource("5_ix14i")]
 transform = Transform3D(-0.03127601, -0.034946296, -0.017336871, -0.014475613, 0.031030921, -0.036435407, 0.03622523, -0.017771844, -0.029527836, 63.93097, 24.489758, 58.818584)
 visible = false
@@ -97,10 +110,19 @@ visible = false
 transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -9.587447, 2.3696177, -0.002107136)
 target_position = Vector3(0, -10, 0)
 
-[node name="Box" parent="." unique_id=588835881 instance=ExtResource("8_hueuk")]
+[node name="BoxFirst" parent="." unique_id=588835881 instance=ExtResource("8_hueuk")]
 transform = Transform3D(0.8963317, 0, -0.4433841, 0, 1, 0, 0.4433841, 0, 0.8963317, -3.0106745, 2.3715098, -0.009256065)
 
 [node name="CanvasLayer" parent="." unique_id=585292028 instance=ExtResource("9_yg4ot")]
 
 [node name="Box2" parent="." unique_id=929323485 instance=ExtResource("8_hueuk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6080976, 2.4842303, -1.9732807)
+
+[node name="Box3" parent="." unique_id=1612678471 instance=ExtResource("8_hueuk")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.246081, 2.4842303, -7.8008947)
+
+[node name="Box4" parent="." unique_id=1064777745 instance=ExtResource("8_hueuk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.246081, 2.4842303, 4.1991053)
+
+[node name="Box5Target" parent="." unique_id=108553940 instance=ExtResource("9_6a8me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.4, 2)
