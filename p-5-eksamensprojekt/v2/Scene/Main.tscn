@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="8_hueuk"]
 [ext_resource type="PackedScene" uid="uid://boio28iht7qps" path="res://Scene/boxTarget.tscn" id="9_6a8me"]
 [ext_resource type="PackedScene" uid="uid://f37w524dae00" path="res://Scene/canvas_layer.tscn" id="9_yg4ot"]
+[ext_resource type="PackedScene" uid="uid://cj4mgf0pfcvlt" path="res://door/doorLevelComplete.tscn" id="10_yg4ot"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st1p4"]
 albedo_texture = ExtResource("1_7rehu")
@@ -126,3 +127,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2
 
 [node name="Box5Target" parent="." unique_id=108553940 instance=ExtResource("9_6a8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.4, 2)
+
+[node name="roll_door seperated1" parent="." unique_id=508131183 instance=ExtResource("10_yg4ot")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.251394, 1.0701371, -1.3733819)

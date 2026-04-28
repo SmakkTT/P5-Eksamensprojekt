@@ -13,11 +13,8 @@ config_version=5
 config/name="P5_Eksamensprojekt"
 run/main_scene="uid://cc83t2h031ost"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
-
-[display]
-
-window/size/mode=3
 
 [global_group]
 
