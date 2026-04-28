@@ -34,6 +34,7 @@ var t_bob = 0.0
 @onready var interact_label: Label = get_tree().root.get_node("Main/UI/Interactable")
 
 var current_interactable = null
+var _interact_label_default_text: String = ""
 
 # Kører når spillet starter
 func _ready() -> void:
@@ -46,6 +47,7 @@ func _ready() -> void:
 		print_debug("Warning: 'draw' animation not found on AnimationPlayer")
 	
 	interact_label.hide()
+	_interact_label_default_text = interact_label.text
 
 # Fanger når spilleren bruger musen eller tasterne
 func _unhandled_input(event: InputEvent) -> void:
@@ -97,12 +99,18 @@ func _update_interact_label() -> void:
 	if interact_ray.is_colliding():
 		var target = interact_ray.get_collider()
 		if target.has_method("interact"):
+			interact_label.text = _interact_label_default_text
 			interact_label.show()
 			return
 
 	# 2. Check proximity-based interactables (doors etc.) in group "interactable"
 	for node in get_tree().get_nodes_in_group("interactable"):
 		if node.has_method("is_player_in_range") and node.is_player_in_range(global_position):
+			if node.has_method("get_interact_label_text"):
+				var custom_text: String = node.get_interact_label_text()
+				interact_label.text = custom_text if custom_text != "" else _interact_label_default_text
+			else:
+				interact_label.text = _interact_label_default_text
 			interact_label.show()
 			return
 

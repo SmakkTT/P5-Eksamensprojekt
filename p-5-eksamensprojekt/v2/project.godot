@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+FadeTransition="*uid://i5bu3movea7d"
+
 [global_group]
 
 spejl=""
