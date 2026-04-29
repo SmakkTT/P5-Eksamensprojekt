@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://boio28iht7qps"]
 
+[ext_resource type="Script" uid="uid://c28ja0t63uq27" path="res://target_outline.gd" id="1_xya42"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_oyhfb"]
 size = Vector3(0.02, 0.6, 0.6)
 
@@ -8,6 +10,7 @@ data = PackedVector3Array(-0.25, 0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.2
 
 [node name="Box" type="MeshInstance3D" unique_id=588835881]
 mesh = SubResource("BoxMesh_oyhfb")
+script = ExtResource("1_xya42")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1532888566 groups=["target"]]
 
