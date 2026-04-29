@@ -34,7 +34,7 @@ func update_progress(lit: int, needed: int, target_hit: bool) -> void:
 	)
 
 func show_complete() -> void:
-	objective_label.text = "[color=green]Dør åbnet — gå videre![/color]"
+	objective_label.text = "[color=green]Dør er åbnet! gå videre![/color]"
 	progress_label.text  = ""
 
 func _get_needed_count() -> int:

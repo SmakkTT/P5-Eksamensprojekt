@@ -27,7 +27,7 @@ func is_player_in_range(player_pos: Vector3) -> bool:
 
 func get_interact_label_text() -> String:
 	if is_locked:
-		return "Døren er låst — løs puslespillet først"
+		return "Døren er låst. Løs puslespillet først"
 	return ""
 
 # Kaldes automatisk af LevelManager når alle objectives er opfyldt
