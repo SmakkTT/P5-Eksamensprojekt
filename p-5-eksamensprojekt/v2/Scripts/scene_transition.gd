@@ -3,18 +3,18 @@ extends CanvasLayer
 @onready var anim = $AnimationPlayer
 
 func change_scene(target: String) -> void:
-	# 1. Play the fade OUT (transparent to black)
+	# Fade til sort
 	anim.play("dissolve")
 	
-	# 2. Wait for the animation to finish
+	# Vent på animation
 	await anim.animation_finished
 	
-	# 3. Change the actual scene
+	# Skift scene
 	get_tree().change_scene_to_file(target)
 	
-	# 4. Play the fade IN (black to transparent)
+	# Fade ind igen
 	anim.play_backwards("dissolve")
 
 func _ready() -> void:
-	# This automatically plays the fade-in the second the game launches!
+	# Fade ind ved start
 	anim.play_backwards("dissolve")
