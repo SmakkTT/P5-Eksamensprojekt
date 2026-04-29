@@ -154,13 +154,14 @@ script = ExtResource("10_vm4ek")
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 620.0
-offset_bottom = 80.0
-theme_override_font_sizes/normal_font_size = 18
+offset_bottom = 100.0
+theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 
 [node name="ProgressLabel" type="RichTextLabel" parent="UI/ObjectiveUI" unique_id=1586247447]
 offset_left = 20.0
-offset_top = 80.0
+offset_top = 100.0
 offset_right = 320.0
-offset_bottom = 160.0
+offset_bottom = 180.0
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true

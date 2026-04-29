@@ -8,7 +8,7 @@ func _ready():
 
 	# Sæt objective-teksten
 	objective_label.bbcode_enabled = true
-	objective_label.text = "[color=yellow]Brug laserstrålen til at ramme target for at åbne døren![/color]"
+	objective_label.text = "[font_size=26][b][color=yellow]Brug laserstrålen til at ramme målet for at åbne døren![/color][/b][/font_size]"
 
 	progress_label.bbcode_enabled = true
 
@@ -17,7 +17,7 @@ func _ready():
 	if needed > 0:
 		progress_label.text = "[color=yellow]Ram " + str(needed) + " spejle med laseren: 0/" + str(needed) + "[/color]"
 	else:
-		progress_label.text = "[color=yellow]Ram target med laseren[/color]"
+		progress_label.text = "[color=yellow]Ram målet med laseren[/color]"
 
 func update_progress(lit: int, needed: int, target_hit: bool) -> void:
 	if needed == 0:
