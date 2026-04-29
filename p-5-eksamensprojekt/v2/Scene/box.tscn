@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://4edjka3ylaup"]
 
+[ext_resource type="Script" uid="uid://dltuv10nd37hb" path="res://Scene/box.gd" id="1_ky0eu"]
 [ext_resource type="Script" uid="uid://bde76tu4nj8w2" path="res://Scripts/static_body_3d.gd" id="1_xcwnv"]
+[ext_resource type="Shader" uid="uid://dfi2jj0fmht7e" path="res://Scene/Mirror.gdshader" id="2_hdacx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oyhfb"]
 size = Vector3(0.02, 0.6, 0.6)
@@ -8,8 +10,21 @@ size = Vector3(0.02, 0.6, 0.6)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g2tbl"]
 data = PackedVector3Array(-0.25, 0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25, 0.25, -0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, 0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, -0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, 0.25, 0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, -0.25)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_hdacx"]
+viewport_path = NodePath("Mirror/MirrorMesh/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ky0eu"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_hdacx")
+shader_parameter/reflection_texture = SubResource("ViewportTexture_hdacx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hdacx"]
+size = Vector3(0.01, 1, 1)
+
 [node name="Box" type="MeshInstance3D" unique_id=588835881]
 mesh = SubResource("BoxMesh_oyhfb")
+script = ExtResource("1_ky0eu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1173934548 groups=["objective_mirror", "spejl"]]
 script = ExtResource("1_xcwnv")
@@ -17,6 +32,32 @@ script = ExtResource("1_xcwnv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1110044630]
 transform = Transform3D(0.05, 0, 0, 0, 1.2, 0, 0, 0, 1.19, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_g2tbl")
+
+[node name="Mirror" type="Node3D" parent="." unique_id=1807525366]
+
+[node name="MirrorMesh" type="MeshInstance3D" parent="Mirror" unique_id=94994560]
+transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, 0.011889711, 0, 0)
+material_override = SubResource("ShaderMaterial_ky0eu")
+mesh = SubResource("BoxMesh_hdacx")
+
+[node name="SubViewport" type="SubViewport" parent="Mirror/MirrorMesh" unique_id=145598520]
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Mirror/MirrorMesh/SubViewport" unique_id=1643753488]
+transform = Transform3D(-2.1855693e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855693e-07, 0.07189131, 0, 0)
+current = true
+
+[node name="MirrorMesh2" type="MeshInstance3D" parent="Mirror" unique_id=204373225]
+transform = Transform3D(-0.595, 0, -5.2016553e-08, 0, 0.595, 0, 5.2016553e-08, 0, -0.595, -0.007680282, 0.0021954626, -0.0011707544)
+material_override = SubResource("ShaderMaterial_ky0eu")
+mesh = SubResource("BoxMesh_hdacx")
+
+[node name="SubViewport" type="SubViewport" parent="Mirror/MirrorMesh2" unique_id=2065106060]
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Mirror/MirrorMesh2/SubViewport" unique_id=717940716]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.022502564, 0, 0)
+current = true
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=900529597]
 size = Vector3(0.5, 0.5, 0.5)
