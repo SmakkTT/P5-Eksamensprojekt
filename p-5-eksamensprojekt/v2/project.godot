@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 FadeTransition="*uid://i5bu3movea7d"
+LevelManager="*uid://doyw8dwqj8tps"
 
 [global_group]
 

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://7bkb25gn5l44" path="res://Assets/textures/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="2_u5kb4"]
 [ext_resource type="PackedScene" uid="uid://dv3tuhkj4utx5" path="res://player/player/player.tscn" id="3_u5kb4"]
 [ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
-[ext_resource type="PackedScene" uid="uid://bjqjjphfksswg" path="res://Assets/tscn/eye1.tscn" id="5_ix14i"]
 [ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
 [ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="8_hueuk"]
 [ext_resource type="PackedScene" uid="uid://boio28iht7qps" path="res://Scene/boxTarget.tscn" id="9_6a8me"]
@@ -53,12 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002737999, 0.5723877, -0.0
 material_override = SubResource("StandardMaterial3D_st1p4")
 use_collision = true
 size = Vector3(50, 1, 50)
-
-[node name="Sketchfab_Scene2" parent="Map" unique_id=188174548 instance=ExtResource("5_ix14i")]
-transform = Transform3D(-0.03127601, -0.034946296, -0.017336871, -0.014475613, 0.031030921, -0.036435407, 0.03622523, -0.017771844, -0.029527836, 63.93097, 24.489758, 58.818584)
-
-[node name="Sketchfab_Scene3" parent="Map" unique_id=121983582 instance=ExtResource("5_ix14i")]
-transform = Transform3D(0.9194676, -0.17070724, -0.354173, 0.0053329025, 0.90615535, -0.42291123, 0.39312994, 0.38696444, 0.8340908, 1518.055, -520.92334, -2453.6616)
 
 [node name="Mirrors & Lasers" type="Node3D" parent="." unique_id=2091452627]
 
