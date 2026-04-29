@@ -58,9 +58,14 @@ func _process(_delta):
 			var q = Quaternion(Vector3.DOWN, bounce_dir.normalized())
 			next_laser.global_transform.basis = Basis(q)
 
+			# NY: Fortæl LevelManager at dette spejl er ramt denne frame
+			if ramt_objekt.is_in_group("objective_mirror"):
+				LevelManager.mark_mirror_lit(ramt_objekt)
+
 		elif ramt_objekt.is_in_group("target"):
 			kill_next_laser()
-			_on_target_hit(ramt_objekt)
+			# NY: Fortæl LevelManager at target er ramt
+			LevelManager.mark_target_hit()
 
 		else:
 			kill_next_laser()
@@ -72,10 +77,6 @@ func _process(_delta):
 		end_particles.position.y          = target_position.y
 		beam_particles.position.y         = target_position.y / 2.0
 		kill_next_laser()
-
-func _on_target_hit(target_node):
-	if target_node.has_method("activate"):
-		target_node.activate()
 
 func kill_next_laser():
 	if next_laser != null:
