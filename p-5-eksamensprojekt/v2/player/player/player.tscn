@@ -109,6 +109,7 @@ target_position = Vector3(0, 0, -3)
 
 [node name="Flashlight" parent="Neck" unique_id=550503856 instance=ExtResource("2_rkbax")]
 transform = Transform3D(-6.993822e-09, 0, 0.16, 0, 0.16, 0, -0.16, 0, -6.993822e-09, -0.199, -0.34405413, 0.294)
+visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Neck/Flashlight" unique_id=375449751]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.3554616, 0.4848435, -1.1920929e-07)
@@ -119,7 +120,9 @@ light_energy = 3.133
 libraries/ = SubResource("AnimationLibrary_yw30f")
 
 [node name="FlashlightAudio" type="AudioStreamPlayer3D" parent="." unique_id=1181682015]
+visible = false
 stream = ExtResource("3_xuvyh")
+volume_db = -80.0
 
 [node name="WalkAudio" type="AudioStreamPlayer" parent="." unique_id=690541721]
 stream = ExtResource("4_uefk6")

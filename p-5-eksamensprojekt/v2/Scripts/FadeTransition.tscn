@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://i5bu3movea7d"]
 
-[ext_resource type="Script" uid="uid://dd5e6judxlpff" path="res://scripts/scene_transition.gd" id="1_eq2db"]
+[ext_resource type="Script" uid="uid://dd5e6judxlpff" path="res://Scripts/scene_transition.gd" id="1_eq2db"]
 
 [sub_resource type="Animation" id="Animation_yf220"]
 resource_name = "RESET"
