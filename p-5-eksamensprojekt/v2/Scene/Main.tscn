@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="8_hueuk"]
 [ext_resource type="PackedScene" uid="uid://boio28iht7qps" path="res://Scene/boxTarget.tscn" id="9_6a8me"]
 [ext_resource type="PackedScene" uid="uid://f37w524dae00" path="res://Scene/canvas_layer.tscn" id="9_yg4ot"]
+[ext_resource type="Script" uid="uid://dpl4trskicjm6" path="res://Scene/objective_ui.gd" id="10_vm4ek"]
 [ext_resource type="PackedScene" uid="uid://cj4mgf0pfcvlt" path="res://door/doorLevelComplete.tscn" id="10_yg4ot"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ix14i"]
@@ -145,3 +146,21 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_font_sizes/font_size = 34
 text = "Press E to interact"
 horizontal_alignment = 1
+
+[node name="ObjectiveUI" type="CanvasLayer" parent="UI" unique_id=1837551881 groups=["UI"]]
+script = ExtResource("10_vm4ek")
+
+[node name="ObjectiveLabel" type="RichTextLabel" parent="UI/ObjectiveUI" unique_id=1987988254]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 620.0
+offset_bottom = 80.0
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+
+[node name="ProgressLabel" type="RichTextLabel" parent="UI/ObjectiveUI" unique_id=1586247447]
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 320.0
+offset_bottom = 160.0
+bbcode_enabled = true

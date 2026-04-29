@@ -5,7 +5,7 @@ extends Node3D
 
 # --- Internal state ---
 var is_open: bool = false
-var is_locked: bool = false  # TODO: set back to true once laser puzzle is implemented
+var is_locked: bool = true  # TODO: set back to true once laser puzzle is implemented
 var player: Node3D = null
 
 @onready var anim_player: AnimationPlayer = $"Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002/Door rolling part_003/AnimationPlayer"
