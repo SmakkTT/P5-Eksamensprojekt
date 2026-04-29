@@ -65,7 +65,9 @@ func _toggle_door() -> void:
 
 # --- Called externally once the laser puzzle is solved ---
 func unlock_door() -> void:
-	pass  # TODO: Set is_locked = false once puzzle completion is implemented
+	is_locked = false
+	print("Dør låst op!")
+	# Valgfrit: spil en lyd eller animation he
 
 
 # --- Triggered when a body enters the NextLevelTrigger area ---

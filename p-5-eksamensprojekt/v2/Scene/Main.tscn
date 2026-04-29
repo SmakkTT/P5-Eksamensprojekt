@@ -121,7 +121,7 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.2
 [node name="Box4" parent="Mirrors & Lasers" unique_id=1064777745 instance=ExtResource("8_hueuk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.246081, 2.4842303, 4.1991053)
 
-[node name="Box5Target" parent="Mirrors & Lasers" unique_id=108553940 instance=ExtResource("9_6a8me")]
+[node name="Box5Target" parent="Mirrors & Lasers" unique_id=108553940 groups=["target"] instance=ExtResource("9_6a8me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.4, 2)
 
 [node name="UI" type="Node3D" parent="." unique_id=386058720]

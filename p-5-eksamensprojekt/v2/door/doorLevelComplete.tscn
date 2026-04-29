@@ -54,10 +54,10 @@ height = 1.1622314
 [sub_resource type="BoxShape3D" id="BoxShape3D_2hoyt"]
 size = Vector3(2.1174316, 2.2875977, 0.20812988)
 
-[node name="Door System" unique_id=508131183 instance=ExtResource("1_guv1h")]
+[node name="Door System" unique_id=508131183 groups=["level_door"] instance=ExtResource("1_guv1h")]
 script = ExtResource("2_mqxow")
 
-[node name="Door rolling part_003" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002" parent_id_path=PackedInt32Array(1698877770) index="0" unique_id=1665666092]
+[node name="Door rolling part_003" parent="Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002" parent_id_path=PackedInt32Array(1005350032) index="0" unique_id=1672975808]
 transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 123.46129, 223.05713, -5.029934)
 material_override = SubResource("ShaderMaterial_mqxow")
 

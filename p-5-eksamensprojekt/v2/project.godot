@@ -27,6 +27,8 @@ spejl=""
 player=""
 target=""
 UI=""
+level_door=""
+objective_mirror=""
 
 [input]
 

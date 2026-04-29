@@ -11,7 +11,7 @@ data = PackedVector3Array(-0.25, 0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.2
 [node name="Box" type="MeshInstance3D" unique_id=588835881]
 mesh = SubResource("BoxMesh_oyhfb")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1173934548 groups=["spejl"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1173934548 groups=["objective_mirror", "spejl"]]
 script = ExtResource("1_xcwnv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1110044630]
