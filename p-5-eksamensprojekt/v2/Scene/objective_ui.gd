@@ -4,29 +4,38 @@ extends CanvasLayer
 @onready var progress_label: RichTextLabel  = $ProgressLabel
 
 func _ready():
-	# Sæt objective-teksten fra LevelManager
-	objective_label.text = "[color=yellow]" + LevelManager.objective_text + "[/color]"
+	add_to_group("objective_ui")
 
-	# Skjul progress hvis ingen spejle kræves
+	# Sæt objective-teksten
+	objective_label.bbcode_enabled = true
+	objective_label.text = "[color=yellow]Brug laserstrålen til at ramme target for at åbne døren![/color]"
+
+	progress_label.bbcode_enabled = true
+
+	# Vis straks med 0 progress så teksten ikke er tom
 	var needed = _get_needed_count()
-	progress_label.visible = needed > 0
+	if needed > 0:
+		progress_label.text = "[color=yellow]Ram " + str(needed) + " spejle med laseren: 0/" + str(needed) + "[/color]"
+	else:
+		progress_label.text = "[color=yellow]Ram target med laseren[/color]"
 
 func update_progress(lit: int, needed: int, target_hit: bool) -> void:
 	if needed == 0:
-		progress_label.visible = false
+		progress_label.text = "[color=" + ("green" if target_hit else "yellow") + "]Ram target med laseren " + ("✓" if target_hit else "") + "[/color]"
 		return
 
-	var mirror_color = "yellow" if lit < needed else "green"
+	var mirror_done = lit >= needed
+	var mirror_color = "green" if mirror_done else "yellow"
 	var target_color = "green" if target_hit else "yellow"
 
 	progress_label.text = (
-		"[color=" + mirror_color + "]Spejle ramt: " + str(lit) + "/" + str(needed) + "[/color]\n" +
-		"[color=" + target_color + "]Target: " + ("✓" if target_hit else "✗") + "[/color]"
+		"[color=" + mirror_color + "]Ram " + str(needed) + " spejle med laseren: " + str(min(lit, needed)) + "/" + str(needed) + (" ✓" if mirror_done else "") + "[/color]\n" +
+		"[color=" + target_color + "]Ram target med laseren" + (" ✓" if target_hit else "") + "[/color]"
 	)
 
 func show_complete() -> void:
-	objective_label.text = "[color=green]Dør åbnet! Gå videre![/color]"
-	progress_label.text  = "[color=green]Level klaret! ✓[/color]"
+	objective_label.text = "[color=green]Dør åbnet — gå videre![/color]"
+	progress_label.text  = ""
 
 func _get_needed_count() -> int:
 	var n = LevelManager.required_mirror_count
