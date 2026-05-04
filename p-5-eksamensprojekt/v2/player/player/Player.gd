@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # --- Indstillinger for bevægelse ---
 const WALK_SPEED = 5.0 # Hvor hurtigt vi går
-const SPRINT_SPEED = 9.0 # Hvor hurtigt vi løber
+const SPRINT_SPEED = 19.0 # Hvor hurtigt vi løber
 const JUMP_VELOCITY = 4.5 # Hvor højt vi hopper
 const SENSITIVITY = 0.003 # Hvor hurtigt kameraet drejer (muse-følsomhed)
 
