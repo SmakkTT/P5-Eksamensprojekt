@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://dqpuwibmdnn2j" path="res://Assets/textures/texture_07.png" id="1_7rehu"]
 [ext_resource type="Texture2D" uid="uid://7bkb25gn5l44" path="res://Assets/textures/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="2_u5kb4"]
 [ext_resource type="PackedScene" uid="uid://dv3tuhkj4utx5" path="res://player/player/player.tscn" id="3_u5kb4"]
-[ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/tscn/pedestal.tscn" id="4_st1p4"]
+[ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/asset tscn/pedestal.tscn" id="4_st1p4"]
 [ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
 [ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="8_hueuk"]
 [ext_resource type="PackedScene" uid="uid://boio28iht7qps" path="res://Scene/boxTarget.tscn" id="9_6a8me"]
 [ext_resource type="PackedScene" uid="uid://f37w524dae00" path="res://Scene/canvas_layer.tscn" id="9_yg4ot"]
-[ext_resource type="Script" uid="uid://dpl4trskicjm6" path="res://Scene/objective_ui.gd" id="10_vm4ek"]
+[ext_resource type="Script" uid="uid://dpl4trskicjm6" path="res://Scripts/objective_ui.gd" id="10_vm4ek"]
 [ext_resource type="PackedScene" uid="uid://cj4mgf0pfcvlt" path="res://door/doorLevelComplete.tscn" id="10_yg4ot"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ix14i"]
@@ -117,7 +117,7 @@ transform = Transform3D(0.8963317, 0, -0.4433841, 0, 1, 0, 0.4433841, 0, 0.89633
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6080976, 2.4842303, -1.9732807)
 
 [node name="Box3" parent="Mirrors & Lasers" unique_id=1612678471 groups=["objective_mirror"] instance=ExtResource("8_hueuk")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.246081, 2.4842303, -7.8008947)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5.246081, 2.4842303, -7.8008947)
 
 [node name="Box4" parent="Mirrors & Lasers" unique_id=1064777745 groups=["objective_mirror"] instance=ExtResource("8_hueuk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.246081, 2.4842303, 4.1991053)
