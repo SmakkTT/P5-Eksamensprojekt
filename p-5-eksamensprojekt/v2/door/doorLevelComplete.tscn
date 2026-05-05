@@ -9,7 +9,7 @@
 render_priority = 0
 shader = ExtResource("2_j4hkb")
 shader_parameter/door_texture = ExtResource("3_c2dc8")
-shader_parameter/clip_height = 3.2000149488837906
+shader_parameter/clip_height = 4.999977536239953
 
 [sub_resource type="Animation" id="Animation_c2dc8"]
 length = 0.001
