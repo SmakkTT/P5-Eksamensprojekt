@@ -42,7 +42,7 @@ func _process(_delta):
 		)
 
 		# Håndter spejl
-		if ramt_objekt.is_in_group("spejl") and current_bounce < max_bounces:
+		if ramt_objekt is Mirror and current_bounce < max_bounces:
 			var normal       = get_collision_normal()
 			var incoming_dir = (get_collision_point() - global_position).normalized()
 			var bounce_dir   = incoming_dir.bounce(normal)
@@ -65,7 +65,7 @@ func _process(_delta):
 				LevelManager.mark_mirror_lit(ramt_objekt)
 
 		# Håndter mål
-		elif ramt_objekt.is_in_group("target"):
+		elif ramt_objekt is TargetReceiver:
 			kill_next_laser()
 			LevelManager.mark_target_hit()
 

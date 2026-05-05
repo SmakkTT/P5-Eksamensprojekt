@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://boio28iht7qps"]
 
+[ext_resource type="Script" uid="uid://bo2xpxticep3r" path="res://Scripts/target_receiver.gd" id="1_xya42"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_oyhfb"]
 size = Vector3(0.02, 0.6, 0.6)
 
@@ -10,6 +12,7 @@ data = PackedVector3Array(-0.25, 0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.2
 mesh = SubResource("BoxMesh_oyhfb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1532888566 groups=["target"]]
+script = ExtResource("1_xya42")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1110044630]
 transform = Transform3D(0.05, 0, 0, 0, 1.2, 0, 0, 0, 1.19, 0, 0, 0)

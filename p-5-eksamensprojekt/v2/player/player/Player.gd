@@ -72,7 +72,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if interact_ray.is_colliding():
 			var target = interact_ray.get_collider()
 			# Tjek om det vi kigger på, har en "interact" funktion
-			if target.has_method("interact"):
+			if target is Interactable:
 				target.interact()
 				current_interactable = target
 
@@ -98,7 +98,7 @@ func _update_interact_label() -> void:
 	# 1. Check raycast for mirrors / anything with interact()
 	if interact_ray.is_colliding():
 		var target = interact_ray.get_collider()
-		if target.has_method("interact"):
+		if target is Interactable:
 			interact_label.text = _interact_label_default_text
 			interact_label.show()
 			return

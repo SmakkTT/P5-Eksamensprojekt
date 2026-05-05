@@ -1,3 +1,4 @@
+class_name LevelDoor
 extends Node3D
 
 @export var interaction_distance: float = 3.0

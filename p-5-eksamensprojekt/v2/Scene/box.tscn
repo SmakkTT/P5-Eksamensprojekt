@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://4edjka3ylaup"]
 
 [ext_resource type="Script" uid="uid://dltuv10nd37hb" path="res://Scripts/box.gd" id="1_ky0eu"]
-[ext_resource type="Script" uid="uid://bde76tu4nj8w2" path="res://Scripts/static_body_3d.gd" id="1_xcwnv"]
 [ext_resource type="Shader" uid="uid://dfi2jj0fmht7e" path="res://Scene/Mirror.gdshader" id="2_hdacx"]
+[ext_resource type="Script" uid="uid://bs5wk4e853cys" path="res://Scripts/mirror.gd" id="2_ky0eu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_oyhfb"]
 size = Vector3(0.02, 0.6, 0.6)
@@ -27,7 +27,7 @@ mesh = SubResource("BoxMesh_oyhfb")
 script = ExtResource("1_ky0eu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1173934548 groups=["objective_mirror", "spejl"]]
-script = ExtResource("1_xcwnv")
+script = ExtResource("2_ky0eu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1110044630]
 transform = Transform3D(0.05, 0, 0, 0, 1.2, 0, 0, 0, 1.19, 0, 0, 0)
