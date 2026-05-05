@@ -27,7 +27,7 @@ glow_enabled = true
 albedo_texture = ExtResource("1_7rehu")
 uv1_triplanar = true
 
-[node name="Main" type="Node3D" unique_id=1116056176]
+[node name="Test Level" type="Node3D" unique_id=1116056176]
 
 [node name="Player" parent="." unique_id=632669668 groups=["player"] instance=ExtResource("3_u5kb4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13, 2, 0)
@@ -155,7 +155,7 @@ script = ExtResource("10_vm4ek")
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 620.0
-offset_bottom = 100.0
+offset_bottom = 132.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
@@ -163,9 +163,9 @@ text = "test"
 
 [node name="ProgressLabel" type="RichTextLabel" parent="UI/ObjectiveUI" unique_id=1586247447]
 offset_left = 20.0
-offset_top = 100.0
+offset_top = 136.0
 offset_right = 320.0
-offset_bottom = 180.0
+offset_bottom = 216.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.78039217)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true

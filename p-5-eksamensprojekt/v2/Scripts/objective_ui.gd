@@ -6,11 +6,16 @@ extends CanvasLayer
 func _ready():
 	add_to_group("objective_ui")
 
-	# Sæt objective-teksten
 	objective_label.bbcode_enabled = true
-	objective_label.text = "[font_size=26][b][color=yellow]Brug laserstrålen til at ramme målet for at åbne døren![/color][/b][/font_size]"
-
 	progress_label.bbcode_enabled = true
+
+	# Get the level name from the root Node3D of the current scene
+	var level_name = get_tree().current_scene.name
+
+	objective_label.text = (
+		"[font_size=20][b][color=red]" + level_name + "[/color][/b][/font_size]\n" +
+		"[font_size=26][b][color=yellow]Brug laserstrålen til at ramme målet for at åbne døren![/color][/b][/font_size]"
+	)
 
 	# Vis straks med 0 progress så teksten ikke er tom
 	var needed = _get_needed_count()
@@ -34,8 +39,12 @@ func update_progress(lit: int, needed: int, target_hit: bool) -> void:
 	)
 
 func show_complete() -> void:
-	objective_label.text = "[color=green]Dør er åbnet! gå videre![/color]"
-	progress_label.text  = ""
+	var level_name = get_tree().current_scene.name
+	objective_label.text = (
+		"[font_size=20][b][color=red]" + level_name + "[/color][/b][/font_size]\n" +
+		"[color=green]Dør er åbnet! gå videre![/color]"
+	)
+	progress_label.text = ""
 
 func _get_needed_count() -> int:
 	var n = LevelManager.required_mirror_count

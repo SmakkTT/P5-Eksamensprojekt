@@ -31,7 +31,7 @@ var t_bob = 0.0
 @onready var interact_ray = $Neck/Camera3D/RayCast3D
 
 # "Press E" label – lives at UI/Interactable in the main scene
-@onready var interact_label: Label = get_tree().root.get_node("Main/UI/Interactable")
+var interact_label: Label = null
 
 var current_interactable = null
 var _interact_label_default_text: String = ""
@@ -46,8 +46,13 @@ func _ready() -> void:
 	else:
 		print_debug("Warning: 'draw' animation not found on AnimationPlayer")
 	
-	interact_label.hide()
-	_interact_label_default_text = interact_label.text
+	# Find label by searching the tree so it works regardless of root node name
+	interact_label = get_tree().current_scene.get_node_or_null("UI/Interactable")
+	if interact_label:
+		interact_label.hide()
+		_interact_label_default_text = interact_label.text
+	else:
+		push_warning("Player: Could not find UI/Interactable label")
 
 # Fanger når spilleren bruger musen eller tasterne
 func _unhandled_input(event: InputEvent) -> void:
@@ -90,6 +95,8 @@ func _process(delta):
 
 # Checks whether any interactable is close/aimed-at and shows/hides the label
 func _update_interact_label() -> void:
+	if interact_label == null:
+		return
 	# Don't show the label while a rotation menu is open
 	if current_interactable != null:
 		interact_label.hide()

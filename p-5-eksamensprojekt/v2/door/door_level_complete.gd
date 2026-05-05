@@ -14,7 +14,8 @@ var player: Node3D = null
 
 
 func _ready() -> void:
-	add_to_group("interactable")
+	# NOT in "interactable" group — door is not player-interactable
+	# Only in "level_door" group for the locked label proximity check
 	add_to_group("level_door")
 
 	var players = get_tree().get_nodes_in_group("player")
@@ -34,8 +35,6 @@ func _init_shader_clip() -> void:
 		push_warning("LevelDoor: no ShaderMaterial found on door_part")
 		return
 
-	# Get the door mesh's AABB (local space), find the top corner,
-	# then convert it to world space — this is the top of the door frame
 	var aabb: AABB = door_part.get_aabb()
 	var local_top := Vector3(0.0, aabb.position.y + aabb.size.y, 0.0)
 	var world_top := door_part.global_transform * local_top
@@ -43,7 +42,18 @@ func _init_shader_clip() -> void:
 
 
 func _process(_delta: float) -> void:
-	pass
+	if player == null:
+		return
+	# Show "door is locked" label when player is close and door is locked
+	if is_locked and is_player_in_range(player.global_position):
+		_show_locked_label()
+
+
+func _show_locked_label() -> void:
+	var p = player
+	if p.get("interact_label") and p.interact_label != null:
+		p.interact_label.text = "Døren er låst. Løs puslespillet først"
+		p.interact_label.show()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -59,12 +69,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func is_player_in_range(player_pos: Vector3) -> bool:
 	return global_position.distance_to(player_pos) <= interaction_distance
-
-
-func get_interact_label_text() -> String:
-	if is_locked:
-		return "Døren er låst. Løs puslespillet først"
-	return ""
 
 
 func unlock_door() -> void:
