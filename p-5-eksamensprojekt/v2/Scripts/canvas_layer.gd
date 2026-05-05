@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-@onready var slider       = $Panel/VBoxContainer/HSlider
-@onready var angle_label  = $Panel/VBoxContainer/AngleLabel
-@onready var tilt_slider  = $Panel/VBoxContainer/TiltSlider
-@onready var tilt_label   = $Panel/VBoxContainer/TiltLabel
+@onready var slider      = $Panel/HBoxContainer/VBoxContainer/HSlider
+@onready var angle_label = $Panel/HBoxContainer/VBoxContainer/AngleLabel
+@onready var tilt_slider = $Panel/HBoxContainer/VBoxContainer2/VSlider
+@onready var tilt_label  = $Panel/HBoxContainer/VBoxContainer2/TiltLabel
 
 var current_box = null
 
@@ -42,12 +42,12 @@ func _input(event):
 
 ## Opdaterer spejlets Y-rotation (venstre/højre)
 func _on_slider_value_changed(value):
-	angle_label.text = str(int(value)) + "°"
+	angle_label.text = str(snappedf(value, 0.1)) + "°"
 	if current_box:
 		current_box.set_y_rotation(value)
 
-## Opdaterer spejlets X-rotation (op/ned)
+## Opdaterer spejlets y-rotation (op/ned)
 func _on_tilt_slider_value_changed(value):
-	tilt_label.text = str(int(value)) + "°"
+	tilt_label.text = str(snappedf(value, 0.1)) + "°"
 	if current_box:
-		current_box.set_x_rotation(value)
+		current_box.set_z_rotation(value)

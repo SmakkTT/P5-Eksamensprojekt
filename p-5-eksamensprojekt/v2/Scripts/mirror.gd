@@ -9,9 +9,9 @@ func interact() -> void:
 func set_y_rotation(degrees: float) -> void:
 	get_parent().rotation_degrees.y = degrees
 
-## Vipper spejlet om X-aksen (op/ned)
-func set_x_rotation(degrees: float) -> void:
-	get_parent().rotation_degrees.x = degrees
+## Vipper spejlet om Z-aksen (op/ned)
+func set_z_rotation(degrees: float) -> void:
+	get_parent().rotation_degrees.z = degrees
 
 func get_interact_label_text() -> String:
 	return ""  # bruger default "Press E to interact"
