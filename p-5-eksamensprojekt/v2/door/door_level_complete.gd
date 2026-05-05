@@ -2,6 +2,7 @@ class_name LevelDoor
 extends Node3D
 
 @export var interaction_distance: float = 3.0
+@export_file("*.tscn") var next_scene: String = ""  # Set this per level in the Inspector
 
 var is_open: bool = false
 var is_locked: bool = true
@@ -51,5 +52,8 @@ func _on_next_level_trigger_body_entered(body: Node3D) -> void:
 
 func _on_player_reached_next_level() -> void:
 	# Skift niveau
+	if next_scene == "":
+		push_warning("LevelDoor: next_scene is not set in the Inspector!")
+		return
 	LevelManager.reset()
-	FadeTransition.change_scene("res://Scene/Main.tscn")
+	FadeTransition.change_scene(next_scene)
