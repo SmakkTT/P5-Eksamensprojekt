@@ -3,6 +3,7 @@ extends Node3D
 
 @export var interaction_distance: float = 3.0
 @export_file("*.tscn") var next_scene: String = ""  # Set this per level in the Inspector
+@export var last_level: bool = false                 # Check this on the final level
 
 var is_open: bool = false
 var is_locked: bool = true
@@ -11,11 +12,11 @@ var player: Node3D = null
 @onready var anim_player: AnimationPlayer = $"Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002/Door rolling part_003/AnimationPlayer"
 @onready var next_level_trigger: Area3D = $Triggerboxes
 @onready var door_part: MeshInstance3D = $"Sketchfab_model_002/a8a349c2440244838af408996c0ee375_fbx_002/RootNode_002/SM_RollingDoor_002/Door rolling part_003"
+@onready var sound_door_toggle: AudioStreamPlayer = $Sounds/DoorToggle
+@onready var sound_door_locked: AudioStreamPlayer = $Sounds/DoorIsLocked
 
 
 func _ready() -> void:
-	# NOT in "interactable" group — door is not player-interactable
-	# Only in "level_door" group for the locked label proximity check
 	add_to_group("level_door")
 
 	var players = get_tree().get_nodes_in_group("player")
@@ -24,7 +25,6 @@ func _ready() -> void:
 
 	next_level_trigger.body_entered.connect(_on_next_level_trigger_body_entered)
 
-	# Wait one frame so the scene is fully placed in world space
 	await get_tree().process_frame
 	_init_shader_clip()
 
@@ -44,26 +44,29 @@ func _init_shader_clip() -> void:
 func _process(_delta: float) -> void:
 	if player == null:
 		return
-	# Show "door is locked" label when player is close and door is locked
-	if is_locked and is_player_in_range(player.global_position):
-		_show_locked_label()
+	if is_player_in_range(player.global_position):
+		if is_locked:
+			_show_locked_label()
+			if Input.is_action_just_pressed("interact"):
+				sound_door_locked.play()
 
 
 func _show_locked_label() -> void:
-	var p = player
-	if p.get("interact_label") and p.interact_label != null:
-		p.interact_label.text = "Døren er låst. Løs puslespillet først"
-		p.interact_label.show()
+	if player.get("interact_label") and player.interact_label != null:
+		player.interact_label.text = "Døren er låst. Løs puslespillet først"
+		player.interact_label.show()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	# DEBUG: F1 toggles lock on/off
 	if event is InputEventKey and event.pressed and event.keycode == KEY_F1:
 		if is_locked:
+			sound_door_locked.play()
 			unlock_door()
 		else:
 			is_locked = true
 			is_open = false
+			sound_door_toggle.play()
 			anim_player.play_backwards("toggleRollDoor")
 
 
@@ -75,7 +78,21 @@ func unlock_door() -> void:
 	if not is_locked:
 		return
 	is_locked = false
+
+	if last_level:
+		# Game completed overlay, sound & quit game with a delay
+		var label = get_tree().current_scene.get_node_or_null("UI/GameCompleted/GameCompletedLabel")
+		label.visible = true
+		var green_overlay = get_tree().current_scene.get_node_or_null("UI/GameCompleted/GreenOverlay")
+		green_overlay.visible = true
+		var complete_audio = get_tree().current_scene.get_node_or_null("UI/GameCompleted/AudioStreamPlayer")
+		complete_audio.play()
+		FadeTransition.quit_game(3.0)
+		return
+
+	# Normal door open — play toggle sound and animate
 	is_open = true
+	sound_door_toggle.play()
 	anim_player.play("toggleRollDoor")
 
 

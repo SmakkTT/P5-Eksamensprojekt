@@ -5,6 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://cp7kfh8f0i0ks" path="res://sounds/flashlight.wav" id="3_xuvyh"]
 [ext_resource type="AudioStream" uid="uid://ebxab8a3ar2t" path="res://sounds/walk.wav" id="4_uefk6"]
 [ext_resource type="AudioStream" uid="uid://coe7j84drylwe" path="res://sounds/sprint.wav" id="5_sfl1c"]
+[ext_resource type="AudioStream" uid="uid://22ca54d422th" path="res://sounds/outside_ambience.wav" id="6_7es5m"]
+[ext_resource type="AudioStream" uid="uid://caaqdx5ud2mjj" path="res://sounds/outside2.wav" id="7_soywc"]
+[ext_resource type="AudioStream" uid="uid://djtxm7e6hpn0e" path="res://sounds/outside3.wav" id="8_qnppy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l24vl"]
 
@@ -132,3 +135,17 @@ volume_db = -8.966
 [node name="SprintAudio" type="AudioStreamPlayer" parent="." unique_id=1356030975]
 stream = ExtResource("5_sfl1c")
 volume_db = -12.948
+
+[node name="AmbientSounds" type="Node" parent="." unique_id=74241939]
+
+[node name="OutsideAmbience1" type="AudioStreamPlayer" parent="AmbientSounds" unique_id=1949604926]
+stream = ExtResource("6_7es5m")
+volume_db = -8.0
+
+[node name="OutsideAmbience2" type="AudioStreamPlayer" parent="AmbientSounds" unique_id=2053301321]
+stream = ExtResource("7_soywc")
+volume_db = -14.0
+
+[node name="OutsideAmbience3" type="AudioStreamPlayer" parent="AmbientSounds" unique_id=337162685]
+stream = ExtResource("8_qnppy")
+volume_db = -14.0

@@ -30,6 +30,13 @@ var t_bob = 0.0
 # Raycast (LaserSpil) 
 @onready var interact_ray = $Neck/Camera3D/RayCast3D
 
+# Ambient sounds
+@onready var ambient_sounds: Array[AudioStreamPlayer] = [
+	$AmbientSounds/OutsideAmbience1,
+	$AmbientSounds/OutsideAmbience2,
+	$AmbientSounds/OutsideAmbience3,
+]
+
 # "Press E" label – lives at UI/Interactable in the main scene
 var interact_label: Label = null
 
@@ -53,6 +60,9 @@ func _ready() -> void:
 		_interact_label_default_text = interact_label.text
 	else:
 		push_warning("Player: Could not find UI/Interactable label")
+
+	# Play a random ambient sound on start
+	ambient_sounds.pick_random().play()
 
 # Fanger når spilleren bruger musen eller tasterne
 func _unhandled_input(event: InputEvent) -> void:

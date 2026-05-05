@@ -4,6 +4,8 @@
 [ext_resource type="Shader" uid="uid://cj4aufehbc84c" path="res://door/doorLevelComplete.gdshader" id="2_j4hkb"]
 [ext_resource type="Script" uid="uid://sqhftquj3cbx" path="res://door/door_level_complete.gd" id="2_mqxow"]
 [ext_resource type="Texture2D" uid="uid://swaa7xjfqwxs" path="res://door/roll_door seperated1_Image_0.png" id="3_c2dc8"]
+[ext_resource type="AudioStream" uid="uid://c28ingbjnr6p0" path="res://sounds/locked_door.wav" id="5_ia4gn"]
+[ext_resource type="AudioStream" uid="uid://cd25g7p64nnqr" path="res://sounds/door.wav" id="6_2hoyt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mqxow"]
 render_priority = 0
@@ -109,3 +111,11 @@ shape = SubResource("CapsuleShape3D_c2dc8")
 [node name="NextLevelTrigger" type="CollisionShape3D" parent="Triggerboxes" index="0" unique_id=288188636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2023199, 1.1337615, -0.16184914)
 shape = SubResource("BoxShape3D_2hoyt")
+
+[node name="Sounds" type="Node" parent="." index="5" unique_id=792614427]
+
+[node name="DoorIsLocked" type="AudioStreamPlayer" parent="Sounds" index="0" unique_id=263126903]
+stream = ExtResource("5_ia4gn")
+
+[node name="DoorToggle" type="AudioStreamPlayer" parent="Sounds" index="1" unique_id=458934429]
+stream = ExtResource("6_2hoyt")
