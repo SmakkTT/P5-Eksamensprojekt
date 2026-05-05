@@ -2,7 +2,7 @@ extends Node
 
 # --- Konfigurér disse i hvert level ---
 @export var objective_text: String = "Brug laserstrålen til at ramme target for at åbne døren!"
-@export var required_mirror_count: int = 4  # 0 = alle i gruppen "objective_mirror"
+@export var required_mirror_count: int = 0  # 0 = alle i gruppen "objective_mirror"
 
 # --- Intern state ---
 var _mirrors_lit_this_frame: Dictionary = {}

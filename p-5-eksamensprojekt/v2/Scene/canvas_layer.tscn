@@ -21,6 +21,28 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="Arrows" type="Label" parent="Panel" unique_id=2036884187]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 47.0
+offset_top = 158.5
+offset_right = 153.0
+offset_bottom = 225.5
+theme_override_font_sizes/font_size = 48
+text = "← → "
+horizontal_alignment = 1
+
+[node name="Arrows2" type="Label" parent="Panel" unique_id=1696583669]
+layout_mode = 0
+offset_left = 230.965
+offset_top = 103.52
+offset_right = 300.9652
+offset_bottom = 244.51999
+theme_override_font_sizes/font_size = 50
+text = "↑
+↓"
+horizontal_alignment = 1
+
 [node name="HintLabel" type="Label" parent="Panel" unique_id=1888054391]
 modulate = Color(1, 1, 1, 0.7176471)
 layout_mode = 1
@@ -48,7 +70,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -175.0
 offset_top = -100.0
-offset_right = 175.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -78,30 +99,47 @@ layout_mode = 2
 size_flags_vertical = 1
 min_value = -90.0
 max_value = 90.0
-step = 0.5
+step = 0.1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1932166906]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel" unique_id=1047100275]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 59.86
+offset_top = -100.0
+offset_right = 159.85852
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer2" unique_id=1932166906]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.0
 
-[node name="TiltSubLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=1195785768]
+[node name="TiltSubLabel" type="Label" parent="Panel/HBoxContainer2/VBoxContainer2" unique_id=1195785768]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16
 text = "VIP SPEJL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TiltLabel" type="Label" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=916240466]
+[node name="TiltLabel" type="Label" parent="Panel/HBoxContainer2/VBoxContainer2" unique_id=916240466]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "0°"
 vertical_alignment = 1
 
-[node name="VSlider" type="VSlider" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=807186416]
+[node name="VSlider" type="VSlider" parent="Panel/HBoxContainer2/VBoxContainer2" unique_id=807186416]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 min_value = -45.0
 max_value = 45.0
-step = 0.5
+step = 0.1

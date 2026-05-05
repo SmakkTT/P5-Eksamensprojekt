@@ -2,8 +2,8 @@ extends CanvasLayer
 
 @onready var slider      = $Panel/HBoxContainer/VBoxContainer/HSlider
 @onready var angle_label = $Panel/HBoxContainer/VBoxContainer/AngleLabel
-@onready var tilt_slider = $Panel/HBoxContainer/VBoxContainer2/VSlider
-@onready var tilt_label  = $Panel/HBoxContainer/VBoxContainer2/TiltLabel
+@onready var tilt_slider = $Panel/HBoxContainer2/VBoxContainer2/VSlider
+@onready var tilt_label  = $Panel/HBoxContainer2/VBoxContainer2/TiltLabel
 
 var current_box = null
 
@@ -39,6 +39,22 @@ func _input(event):
 		if player:
 			player.current_interactable = null
 		close_rotation_menu()
+
+	# Piltaster styrer sliderne
+	if visible and event is InputEventKey and event.pressed:
+		var step = 0.1
+		# Shift = større step
+		if event.shift_pressed:
+			step = 5.0
+		match event.keycode:
+			KEY_LEFT:
+				slider.value -= step
+			KEY_RIGHT:
+				slider.value += step
+			KEY_UP:
+				tilt_slider.value += step
+			KEY_DOWN:
+				tilt_slider.value -= step
 
 ## Opdaterer spejlets Y-rotation (venstre/højre)
 func _on_slider_value_changed(value):
