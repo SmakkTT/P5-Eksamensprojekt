@@ -15,13 +15,22 @@ func _ready():
 
 func open_rotation_menu(box):
 	# Åbn menu og vis mus
-	current_box = box
-	var current_y = current_box.get_parent().rotation_degrees.y
-	var current_x = current_box.get_parent().rotation_degrees.x
+	current_box = null  # Nullify first so value_changed does not fire rotation
+	var current_y = box.get_parent().rotation_degrees.y
+	var current_x = box.get_parent().rotation_degrees.x
+	# Disconnect before setting value to prevent value_changed firing during setup
+	if slider.value_changed.is_connected(_on_slider_value_changed):
+		slider.value_changed.disconnect(_on_slider_value_changed)
+	if tilt_slider.value_changed.is_connected(_on_tilt_slider_value_changed):
+		tilt_slider.value_changed.disconnect(_on_tilt_slider_value_changed)
 	slider.value      = current_y
 	angle_label.text  = str(int(current_y)) + "°"
 	tilt_slider.value = current_x
 	tilt_label.text   = str(int(current_x)) + "°"
+	# Reconnect after values are set
+	slider.value_changed.connect(_on_slider_value_changed)
+	tilt_slider.value_changed.connect(_on_tilt_slider_value_changed)
+	current_box = box
 	show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -58,12 +67,14 @@ func _input(event):
 
 ## Opdaterer spejlets Y-rotation (venstre/højre)
 func _on_slider_value_changed(value):
-	angle_label.text = str(snappedf(value, 0.1)) + "°"
+	var clamped = clampf(value, -180.0, 180.0)
+	angle_label.text = str(snappedf(clamped, 0.1)) + "°"
 	if current_box:
-		current_box.set_y_rotation(value)
+		current_box.set_y_rotation(clamped)
 
 ## Opdaterer spejlets y-rotation (op/ned)
 func _on_tilt_slider_value_changed(value):
-	tilt_label.text = str(snappedf(value, 0.1)) + "°"
+	var clamped = clampf(value, -180.0, 180.0)
+	tilt_label.text = str(snappedf(clamped, 0.1)) + "°"
 	if current_box:
-		current_box.set_z_rotation(value)
+		current_box.set_z_rotation(clamped)

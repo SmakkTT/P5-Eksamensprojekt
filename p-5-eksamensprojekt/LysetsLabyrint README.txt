@@ -7,5 +7,5 @@ Piltaster - Roter spejlene
 
 DEBUG KEYBINDS:
 F1 - Låse døren op, for at automatisk kunne komme videre til næste level
-F2 - Toggle alle spejlene
+F2 - Toggle alle spejlene (ANBEFALET!!)
 
