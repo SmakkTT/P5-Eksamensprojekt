@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dqpuwibmdnn2j" path="res://Assets/textures/texture_07.png" id="1_7rehu"]
 [ext_resource type="Texture2D" uid="uid://7bkb25gn5l44" path="res://Assets/textures/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="2_u5kb4"]
 [ext_resource type="PackedScene" uid="uid://dv3tuhkj4utx5" path="res://player/player/player.tscn" id="3_u5kb4"]
-[ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/asset tscn/pedestal.tscn" id="4_st1p4"]
+[ext_resource type="PackedScene" uid="uid://cy5a5fh2gcnt7" path="res://Assets/asset tscn/pedestalGlb.tscn" id="4_st1p4"]
 [ext_resource type="PackedScene" uid="uid://ccaxhmx4rgnk7" path="res://Scene/laser.tscn" id="6_aan6j"]
 [ext_resource type="PackedScene" uid="uid://4edjka3ylaup" path="res://Scene/box.tscn" id="8_hueuk"]
 [ext_resource type="PackedScene" uid="uid://boio28iht7qps" path="res://Scene/boxTarget.tscn" id="9_6a8me"]
