@@ -164,8 +164,8 @@ text = "test"
 [node name="ProgressLabel" type="RichTextLabel" parent="UI/ObjectiveUI" unique_id=1586247447]
 offset_left = 20.0
 offset_top = 136.0
-offset_right = 320.0
-offset_bottom = 216.0
+offset_right = 378.0
+offset_bottom = 440.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.78039217)
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true

@@ -9,6 +9,13 @@ var _mirrors_lit_this_frame: Dictionary = {}
 var _target_hit_this_frame: bool = false
 var _level_complete: bool = false
 
+func _ready():
+	get_tree().scene_changed.connect(_on_scene_changed)
+
+func _on_scene_changed():
+	reset()
+
+
 func _process(_delta):
 	_mirrors_lit_this_frame.clear()
 	_target_hit_this_frame = false
