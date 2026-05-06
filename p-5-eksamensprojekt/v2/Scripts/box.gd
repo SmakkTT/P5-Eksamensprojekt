@@ -1,5 +1,7 @@
 extends Node3D
 
+var mirrors_visible: bool = true
+
 @onready var mirror_mesh = $Mirror/MirrorMesh
 @onready var mirror_viewport = $Mirror/MirrorMesh/SubViewport
 @onready var mirror_cam = $Mirror/MirrorMesh/SubViewport/Camera3D
@@ -15,6 +17,26 @@ func _ready():
 	if mat is ShaderMaterial:
 		# Send billede til shader
 		mat.set_shader_parameter("reflection_texture", mirror_viewport.get_texture())
+
+func _unhandled_input(event: InputEvent) -> void:
+	# DEBUG: F2 toggles mirrors off for performance
+	if event is InputEventKey and event.pressed and event.keycode == KEY_F2:
+		mirrors_visible = not mirrors_visible
+
+		# Hide meshes
+		$Mirror/MirrorMesh.visible = mirrors_visible
+		$Mirror/MirrorMesh2.visible = mirrors_visible
+
+		# Stop/start subviewport rendering
+		var vp1 = $Mirror/MirrorMesh/SubViewport
+		var vp2 = $Mirror/MirrorMesh2/SubViewport
+		var update_mode = SubViewport.UPDATE_ALWAYS if mirrors_visible else SubViewport.UPDATE_DISABLED
+		vp1.render_target_update_mode = update_mode
+		vp2.render_target_update_mode = update_mode
+
+		# Disable mirror cameras
+		$Mirror/MirrorMesh/SubViewport/Camera3D.current = mirrors_visible
+		$Mirror/MirrorMesh2/SubViewport/Camera3D.current = mirrors_visible
 
 func _process(_delta):
 	var main_cam = get_viewport().get_camera_3d()

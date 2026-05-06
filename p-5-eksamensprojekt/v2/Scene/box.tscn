@@ -45,6 +45,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Mirror/MirrorMesh/SubViewport" unique_id=1643753488]
 transform = Transform3D(-2.1855693e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855693e-07, 0.07189131, 0, 0)
+visible = false
 current = true
 
 [node name="MirrorMesh2" type="MeshInstance3D" parent="Mirror" unique_id=204373225]
@@ -57,6 +58,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Mirror/MirrorMesh2/SubViewport" unique_id=717940716]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.022502564, 0, 0)
+visible = false
 current = true
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=900529597]
