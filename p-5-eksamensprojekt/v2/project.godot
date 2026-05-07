@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 FadeTransition="*uid://i5bu3movea7d"
 LevelManager="*uid://doyw8dwqj8tps"
 
+[display]
+
+window/size/mode=3
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
